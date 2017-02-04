@@ -1,0 +1,41 @@
+<div class="wide-center fixed-header-margin fixed-div">
+	<div class="information-blocks">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="wishlist-header hidden-xs" ng-if="$root.cart.products.length">
+					<div class="title-1">Producto</div>
+					<div class="title-2">Añadir</div>
+				</div>
+				<div ng-if="!$root.cart.products.length" class="message-box message-info">
+					<div class="message-icon"><i class="fa fa-exclamation"></i></div>
+					<div class="message-text"><b>Hola!</b> Para ver productos acá primero agregalos a tus favorits.</div>
+				</div>
+				<div class="wishlist-box" ng-repeat="product in $root.favorites.products">
+					<div class="wishlist-entry">
+						<div class="column-1">
+							<div class="traditional-cart-entry">
+								<a class="image" href="#"><img alt="" src="{{product.image}}"></a>
+								<div class="content">
+									<div class="cell-view">
+										<!--<a class="tag" href="#">woman clothing</a>-->
+										<a class="title" href="#">{{product.name}}</a>
+										<div class="inline-description">{{product.description}}</div>
+										<div class="price detail-info-entry">
+											<!--<div class="prev">$90,00</div>-->
+											<div class="current">{{product.value | currency :$:0}}</div>
+										</div>
+										<!--<div class="inline-description">Zigzag Clothing</div>-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="column-2">
+							<a class="button style-14" ng-click="favorites.addProduct(product)">Añadir al carrito</a>
+							<a class="remove-button" ng-click="favorites.removeProduct(product.id)"><i class="fa fa-times"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

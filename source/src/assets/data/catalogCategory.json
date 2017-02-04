@@ -1,0 +1,104 @@
+[
+  {
+    "id": "a06e7af75fd547a0bc551570adae05ad",
+    "name": "Aceites y Vinagres",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/aceites.png",
+    "products": [
+      {
+        "id": "93be6da9072141fc94dd3f6b92a345f1",
+        "name": "Oliosoya",
+        "description": null,
+        "image": "http://www.exito.com/images/products/465/0000500914764465/0000500915975751_lrg_a.jpg",
+        "quantity": 750,
+        "unitMeasure": "ml",
+        "value": 5500,
+        "promotion": null
+      }
+    ],
+    "promotion": null
+  },
+  {
+    "id": "09a2e825cec74dc9956c5e457184c6f3",
+    "name": "Arroz, granos y pastas",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/arroz.png",
+    "products": [
+      {
+        "id": "2da0dd88ae244d6196b4fccd63191a9d",
+        "name": "Pastas La muñeca",
+        "description": null,
+        "image": "http://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0016/7535/brand.gif?itok=N0LH7ueC",
+        "quantity": 250,
+        "unitMeasure": "grms",
+        "value": 1800,
+        "promotion": null
+      },
+      {
+        "id": "69a9858ab6844aecb0b76256ad661496",
+        "name": "Spaguetis Doria",
+        "description": null,
+        "image": "http://amercar.co/35-home_default/spaghetti-doria-200g.jpg",
+        "quantity": 250,
+        "unitMeasure": "grms",
+        "value": 1000,
+        "promotion": null
+      },
+      {
+        "id": "3d7088fc00b143538d83a6a0f9aa5e14",
+        "name": "Pastas Divella",
+        "description": null,
+        "image": "http://www.continental-food.co.uk/images/cqs-products/Bakery/logos/Divella-logo.jpg",
+        "quantity": 250,
+        "unitMeasure": "grms",
+        "value": 1300,
+        "promotion": null
+      },
+      {
+        "id": "97751948-c50e-4742-9036-01a3e3f14e71",
+        "name": "Arroz",
+        "description": "Arroz Para Sushi 907 gr NISHIKI",
+        "image": "https://lapptiendadev.blob.core.windows.net/images/photo-7fe593fd-88cb-470b-b050-127cb4c526b5.jpg",
+        "quantity": 1,
+        "unitMeasure": "lb",
+        "value": 6500,
+        "promotion": null
+      }
+    ],
+    "promotion": null
+  },
+  {
+    "id": "d2afbad09e8e42e19b2af4a5390a4d4d",
+    "name": "Azúcar, sal y condimentos",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/azucar.png",
+    "products": [
+      {
+        "id": "be312e4d824c4314ac256587c0fcf5fc",
+        "name": "Azúcar Vivó",
+        "description": null,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9QOBEwvJNVCyTWXcyBgaiVFoxJUgvnHfl75dEmMnkoLUDcbWYqQ",
+        "quantity": 250,
+        "unitMeasure": "grms",
+        "value": 1500,
+        "promotion": null
+      }
+    ],
+    "promotion": null
+  },
+  {
+    "id": "fb07f9aca3334aea9ff6c72945c184d2",
+    "name": "Chocolate y café",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/chocolate.png",
+    "products": [
+      {
+        "id": "af367abed31b4b2dbe735a4ae55115de",
+        "name": "Café La Bastilla",
+        "description": null,
+        "image": "http://productoscolombianos.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/l/a/la_bastilla_fuerte.jpg",
+        "quantity": 50,
+        "unitMeasure": "grms",
+        "value": 3000,
+        "promotion": null
+      }
+    ],
+    "promotion": null
+  }
+]

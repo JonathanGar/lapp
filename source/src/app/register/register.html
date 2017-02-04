@@ -1,0 +1,99 @@
+<div class="register-container container" style="margin-top: 200px;">
+  <form id="accountForm" name="registerForm" class="form-horizontal" ng-submit="register.SaveClient(register.client, register.adresses);">
+
+      <div class="tab-pane active" id="basic-info" style="margin-top: 2em;">
+        <div class="form-group">
+          <div class="col-md-5">
+            <input id="clientName" ng-model="register.client.name" name="clientName" type="text" placeholder="Nombre y apellido" class="form-control input-md"
+              required="">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-5">
+            <input id="client-phoneNumber" ng-model="register.client.phoneNumber" name="client-phoneNumber" type="text" placeholder="Teléfono"
+              class="form-control input-md">
+          </div>
+        </div>
+        <div class="form-group required">
+          <div class="col-md-5">
+            <p class="input-group" ng-click="register.open($event)">
+              <input id="fecha" name="fecha" type="date" class="form-control"
+                ng-model="register.client.birthDate" is-open="register.opened" min-date="1900-01-01" max-date="'2099-12-31'"
+                datepicker-options="register.dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
+              />
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-5">
+            <input id="email-client" ng-model="register.client.email" name="email-client" type="email" placeholder="Correo Electrónico"
+              class="form-control input-md" required="">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-5">
+            <select placeholder="Género" class="form-control input-md" ng-model="register.client.gender">
+                <option value="1" selected>Femenino</option>
+                <option value="1">Masculino</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-5">
+            <input id="client-password" ng-model="register.client.password" name="client-password" type="password" placeholder="Contraseña"
+              class="form-control input-md" required="">
+          </div>
+        </div>
+
+      </div>
+      <!--<div class="tab-pane" id="client-adresses" style="margin-top: 2em;">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="client-mainAdress">Dirección</label>
+          <div class="col-md-5">
+            <input id="client-mainAdress" ng-model="register.adresses.mainAdress" name="client-mainAdress" type="text" placeholder="Dirección"
+              class="form-control input-md">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="client-landMark">Sector/Barrio</label>
+          <div class="col-md-5">
+            <input id="client-landMark" ng-model="register.adresses.landMark" name="client-landMark" type="text" placeholder="Sector/Barrio"
+              class="form-control input-md">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="client-notes">Notas</label>
+          <div class="col-md-5">
+            <input id="client-notes" ng-model="register.adresses.notes" name="client-notes" type="text" placeholder="Notas" class="form-control input-md">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="client-type">Tipo</label>
+          <div class="col-md-5">
+            <input id="client-type" ng-model="register.adresses.type" name="client-type" type="text" placeholder="Tipo" class="form-control input-md">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="client-adressPhone">Número de teléfono</label>
+          <div class="col-md-5">
+            <input id="client-adressPhone" ng-model="register.adresses.adressPhone" name="client-adressPhone" type="text" placeholder="Número de teléfono"
+              class="form-control input-md">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="contact-name">Nombre del contacto</label>
+          <div class="col-md-5">
+            <input id="contact-name" ng-model="register.adresses.contactName" name="contact-name" type="text" placeholder="Nombre del contacto"
+              class="form-control input-md">
+          </div>
+        </div>
+      </div>
+    </div>-->
+      <div class="form-group" style="margin-top: 15px;">
+        <div class="col-xs-5 col-xs-offset-3 col-md-4 col-md-offset-4">
+          <button id="singlebutton" name="singlebutton" class="button style-10" type="submit" ng-disabled="registerForm.$invalid">
+        Registrarse
+        </button>
+        </div>
+  </form>
+  </div>

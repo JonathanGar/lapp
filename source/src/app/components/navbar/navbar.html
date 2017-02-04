@@ -1,0 +1,150 @@
+<!-- HEADER -->
+<div class="header-wrapper style-9">
+    <header class="type-1">
+        <div class="header-top">
+            <!--<div class="header-top-entry">
+                <div class="title">
+                  <img src="./../assets/images//flag-lang-3.png" alt="" />Español<i class="fa fa-caret-down"></i>
+                </div>
+                <div class="list">
+                    <a href="#" class="list-entry"><img src="./../assets/images//flag-lang-1.png" alt="" />English</a>
+                    <a href="#" class="list-entry"><img src="./../assets/images//flag-lang-2.png" alt="" />French</a>
+                </div>
+            </div>
+            <div class="header-top-entry">
+                <div class="title"><b>Moneda:</b> $ COP<i class="fa fa-caret-down"></i></div>
+                <div class="list">
+                    <a href="#" class="list-entry">$ USD</a>
+                    <a href="#" class="list-entry">&#8364; EUR</a>
+                </div>
+            </div>-->
+            <div class="departmets-drop-down hidden-xs">
+                <div class="title"><i class="fa fa-reorder"></i>
+                  <i class="fa fa-close"></i> Comprar por categorias
+                </div>
+                <ul class="list" >
+                    <li ng-repeat="categorie in nav.categories">
+                        <a ui-sref="categories({ id: categorie.id })"><i class="fa fa-angle-right"></i>{{categorie.name | uppercase}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-button responsive-menu-toggle-class"><i class="fa fa-reorder"></i></div>
+            <div class="clear"></div>
+        </div>
+        <div class="header-middle">
+            <div class="logo-wrapper">
+                <a id="logo" href="/"><img src="./../assets/images//logo.png" alt="Logo Lapp Tienda" /></a>
+            </div>
+            <div class="middle-entry">
+                <div class="search-box">
+                    <form>
+                        <div class="search-button">
+                            <i class="fa fa-search"></i>
+                            <input type="submit" />
+                        </div>
+                        <div class="search-drop-down">
+                            <div class="title"><span>Todas</span><i class="fa fa-angle-down"></i></div>
+                            <div class="list">
+                                <div class="overflow">
+                                    <div ng-repeat="categorie in nav.categories" class="category-entry">
+                                        {{categorie.name}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="search-field">
+                            <!--{{nav.products|json}}-->
+                            <input type="text" ng-model="nav.productSelected" placeholder="Buscar Producto"
+                              uib-typeahead="product for products in nav.products | filter:{name:$viewValue}"
+                              typeahead-template-url="customTemplate.html" class="form-control" typeahead-show-hint="false"
+                                typeahead-min-length="1" typeahead-on-select="nav.onSelect($item, $model, $label)"/>
+                            <!--<input type="text" value="" placeholder="Buscar Producto" />-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="right-entries">
+                <a class="header-functionality-entry open-search-popup" href="#">
+                  <i class="fa fa-search"></i>
+                  <span>Buscar</span>
+                </a>
+                <a class="header-functionality-entry" ui-sref="orders">
+                  <i class="fa fa-copy"></i><span>Mis pedidos</span>
+                </a>
+                <a class="header-functionality-entry"  ui-sref="favorites">
+                  <i class="fa fa-heart-o"></i>
+                  <span>Favoritos</span>
+                </a>
+                <a class="header-functionality-entry open-cart-popup" ui-sref="cart">
+                  <i class="fa fa-shopping-cart"></i>
+                  <span>Mi Carrito</span>
+                  <b>{{$root.cart.subTotal | currency :$:0}}</b>
+                </a>
+            </div>
+        </div>
+        <div class="close-header-layer"></div>
+        <div class="navigation">
+            <div class="navigation-header responsive-menu-toggle-class">
+                <div class="title">Navigation</div>
+                <div class="close-menu"></div>
+            </div>
+            <div class="nav-overflow" id="menu--main">
+                <nav>
+                    <ul>
+                        <li class="full-width">
+                            <a href="/" class="active">Inicio</a></i>
+                        </li>
+                        <li>
+                            <a ui-sref="login">Mi Cuenta</a>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                    <a class="fixed-header-visible additional-header-logo"><img src="./../assets/images/logo-minimal.png" alt="" /></a>
+                </nav>
+                <div class="navigation-footer responsive-menu-toggle-class">
+                    <div class="socials-box">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-youtube"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="clear"></div>
+</div>
+
+<script type="text/ng-template" id="customTemplate.html">
+    <!--{{match|json}}-->
+    <!--<a>
+        <img ng-src="{{match.model.thumbnailUrl}}" width="48">
+
+        <span class="title" ng-bind-html="match.model.name | uibTypeaheadHighlight:query"></span>
+    </a>-->
+
+    <div class="information-entry">
+
+        <div class="inline-product-entry" width="100%">
+            <a class="image" href="#"><img ng-src="{{match.model.thumbnailUrl}}" alt=""></a>
+            <div class="content">
+                <div class="cell-view">
+                    <a class="title" href="#">{{match.model.name}}</a>
+                    <div class="price">
+                        <div class="current">{{match.model.value | currency :$:0}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+
+</script>

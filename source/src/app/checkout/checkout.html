@@ -1,0 +1,173 @@
+<div class="wide-center fixed-header-margin" style="margin-top:200px;">
+  <div class="breadcrumb-box">
+    <a href="#">Home</a>
+    <a href="#">Checkout</a>
+  </div>
+  <div class="information-blocks">
+    <div class="row">
+      <div class="col-sm-9 information-entry">
+        <div class="accordeon size-1">
+          <div class="accordeon-title active"><span class="number">1</span>Checkout Method</div>
+          <div class="accordeon-entry">
+            <div class="row">
+              <div class="col-md-6 information-entry">
+                <div class="article-container style-1">
+                  <h3>Inicia sesión o registrarse como cliente</h3>
+                  <p>
+                    Si aun no tienes una cuenta en nuestra plata
+                  </p>
+                  <p>
+                    <label class="checkbox-entry radio">
+                    <input type="radio" name="custom-name" checked />
+                    <span class="check"></span> <b>Iniciar sesión</b>
+                    </label>
+                    <label class="checkbox-entry radio">
+                    <input type="radio" name="custom-name" />
+                    <span class="check"></span> <b>Registrarse</b>
+                    </label>
+                  </p>
+                  <a class="button style-10">Continuar</a>
+                </div>
+              </div>
+              <div class="col-md-6 information-entry">
+                <div class="article-container style-1" ng-controller="LoginController as login">
+                  <h3>Iniciar sesión</h3>
+                  <p>
+                    Puedes iniciar sesión en nuestra plataforma con alguna de estas opciones
+                  </p>
+                  <div class="btn-group-vertical" role="group" aria-label="...">
+                    <a ui-sref="register" class="btn btn-local">
+                    <i class="fa fa-user">  Register Account</i>
+                    </a>
+                    <br/>
+                    <a ng-click="OauthButtons.loginOauth('facebook')" class="btn btn-facebook">
+                    <i class="fa fa-facebook"></i> Connect with Facebook
+                    </a>
+                    <br/>
+                    <a ng-click="OauthButtons.loginOauth('google')" class="btn btn-google">
+                    <i class="fa fa-google-plus"></i>Connect with Google+
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordeon-title"><span class="number">2</span>Datos de facturación</div>
+          <div class="accordeon-entry">
+            <div class="article-container style-1">
+              <form>
+                <div class="form-group">
+                  <label for="name">Nombre</label>
+                  <input type="text" class="form-control" id="name" placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="accordeon-title">
+            <span class="number">3</span>
+            ¿Tiene un cupón? Haga clic aquí para escribir el Código
+          </div>
+          <div class="accordeon-entry">
+            <div class="article-container style-1">
+              <form class="checkout_coupon" method="post" style="display: block;">
+                <p class="form-row form-group form-row-first">
+                  <label class="input-desc" for="coupon_code">Coupon code</label>
+                  <input type="text" name="coupon_code" class="input-text form-control" placeholder="Coupon code" id="coupon_code" value="">
+                </p>
+                <p class="form-row form-group form-row-last">
+                  <input type="submit" class="button style-10" name="apply_coupon" value="Apply Coupon">
+                </p>
+                <div class="clear"></div>
+              </form>
+            </div>
+          </div>
+          <div class="accordeon-title"><span class="number">4</span>Horario de entrega</div>
+          <div class="accordeon-entry">
+            <div class="article-container style-1">
+              <p>By creating an account with our store, you will be able to move through the checkout
+                process faster, store multiple shipping addresses, view and track your orders in your
+                account and more.Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                quasi architecto beatae vitae dicta sunt explicabo.
+              </p>
+            </div>
+          </div>
+          <div class="accordeon-title"><span class="number">5</span>Revisión del pedido</div>
+          <div class="accordeon-entry">
+            <div class="article-container style-1">
+              <table class="table table-responsive shop_table woocommerce-checkout-review-order-table">
+                <thead>
+                  <tr>
+                    <th class="product-name">Product</th>
+                    <th class="product-total">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="cart_item">
+                    <td class="product-name">
+                      Seacliff Classic Shirt&nbsp;
+                      <strong class="product-quantity">× 1</strong>
+                    </td>
+                    <td class="product-total">
+                      <span class="amount">$260.00</span>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr class="cart-subtotal">
+                    <th>Subtotal</th>
+                    <td><span class="amount">$260.00</span></td>
+                  </tr>
+                  <tr class="shipping">
+                    <th>Shipping</th>
+                    <td>
+                      <p>Please fill in your details to see available shipping methods.</p>
+                    </td>
+                  </tr>
+                  <tr class="order-total">
+                    <th>Total</th>
+                    <td><strong><span class="amount">$260.00</span></strong> </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="accordeon-title"><span class="number">6</span>Método de pago</div>
+          <div class="accordeon-entry">
+            <div class="article-container style-1">
+              <div id="payment" class="woocommerce-checkout-payment">
+                <label class="checkbox-entry radio">
+                  <input type="radio" name="custom-name" checked />
+                  <span class="check"></span> <b>Efectivo</b>
+                </label>
+                <label class="checkbox-entry radio">
+                  <input type="radio" name="custom-name" />
+                  <span class="check"></span> <b>Tarjeta de Credito</b>
+                </label>
+                <div class="form-row place-order">
+                  <a class="button style-10">Confirmar pedido</a>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 information-entry" ng-controller="ShopCategoriesController as shop">
+        <div class="sidebar-navigation">
+          <div class="title">Categorias<i class="fa fa-angle-down"></i></div>
+            <div class="list">
+              <a ng-repeat="catalog in shop.catalogs" class="entry"
+                ng-click="shop.events.getSubCategory(catalog.id)" data-id="{{catalog.id}}">
+                <span><i class="fa fa-angle-right"></i>{{catalog.name}}</span>
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

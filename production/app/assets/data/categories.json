@@ -1,0 +1,212 @@
+[
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T19:09:14.131Z",
+    "createdAt": "2016-06-15T19:53:12.025Z",
+    "version": "AAAAAAAACno=",
+    "id": "085904c44c5d4913b1b3f4e24e347103",
+    "parentId": null,
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/LACTEOS.png",
+    "name": "Lacteos, huevos y refrigerados"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:46:27.188Z",
+    "createdAt": "2016-06-20T14:46:27.188Z",
+    "version": "AAAAAAAACh4=",
+    "id": "09a2e825cec74dc9956c5e457184c6f3",
+    "parentId": "8b1c3b3ca9434eeeae7f486579ff06e9",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/arroz.png",
+    "name": "Arroz, granos y pastas"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:59:35.302Z",
+    "createdAt": "2016-06-20T14:59:35.287Z",
+    "version": "AAAAAAAACi4=",
+    "id": "0d6896dab50149b8ac2fa4cc22a0b786",
+    "parentId": "a07a63418f1741afbbeee3afc101d088",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/leche.png",
+    "name": "Leche"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T15:07:16.533Z",
+    "createdAt": "2016-06-20T15:07:16.517Z",
+    "version": "AAAAAAAACjw=",
+    "id": "0f992d3f6a3142beaa477697b991ba69",
+    "parentId": "4490983d5c8f43b9a5375a59b4e5c52f",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/panaderiadulce.png",
+    "name": "Panadería dulce"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T15:04:28.56Z",
+    "createdAt": "2016-06-20T15:04:28.56Z",
+    "version": "AAAAAAAACjQ=",
+    "id": "4490983d5c8f43b9a5375a59b4e5c52f",
+    "parentId": null,
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/PANADERIA.png",
+    "name": "PANADERÍA Y GALLETAS"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T15:05:59.812Z",
+    "createdAt": "2016-06-20T15:05:59.812Z",
+    "version": "AAAAAAAACjg=",
+    "id": "5e04c1a88aef4f56aa23930fa8076cbf",
+    "parentId": "4490983d5c8f43b9a5375a59b4e5c52f",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/tostadas.png",
+    "name": "Tostadas"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T19:09:26.6Z",
+    "createdAt": "2016-06-15T23:06:51.918Z",
+    "version": "AAAAAAAACnw=",
+    "id": "64f0b8a435944dfcb3fa2515407968f9",
+    "parentId": "085904c44c5d4913b1b3f4e24e347103",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/LACTEOS.png",
+    "name": "Cremas a base de leche"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:56:48.017Z",
+    "createdAt": "2016-06-20T14:56:48.017Z",
+    "version": "AAAAAAAACiw=",
+    "id": "65520cfecf684ebd9279c02d6db143ca",
+    "parentId": "a07a63418f1741afbbeee3afc101d088",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/huevos.png",
+    "name": "Huevos"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T15:06:31.594Z",
+    "createdAt": "2016-06-20T15:06:31.594Z",
+    "version": "AAAAAAAACjo=",
+    "id": "8aaeeb2f0e4341dfaa1870feb6ba1e09",
+    "parentId": "4490983d5c8f43b9a5375a59b4e5c52f",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/galletas.png",
+    "name": "Galletas"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:43:18.902Z",
+    "createdAt": "2016-06-20T14:43:18.902Z",
+    "version": "AAAAAAAACho=",
+    "id": "8b1c3b3ca9434eeeae7f486579ff06e9",
+    "parentId": null,
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/DESPENSA.png",
+    "name": "DESPENSA"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:45:27.828Z",
+    "createdAt": "2016-06-20T14:45:27.828Z",
+    "version": "AAAAAAAAChw=",
+    "id": "a06e7af75fd547a0bc551570adae05ad",
+    "parentId": "8b1c3b3ca9434eeeae7f486579ff06e9",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/aceites.png",
+    "name": "Aceites y Vinagres"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:55:24.624Z",
+    "createdAt": "2016-06-20T14:55:24.624Z",
+    "version": "AAAAAAAACio=",
+    "id": "a07a63418f1741afbbeee3afc101d088",
+    "parentId": null,
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/LACTEOS.png",
+    "name": "LÁCTEOS Y HUEVO"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T15:01:20.446Z",
+    "createdAt": "2016-06-20T15:01:20.446Z",
+    "version": "AAAAAAAACjI=",
+    "id": "a2d1d2289e174feaa99605b0304ee30d",
+    "parentId": "a07a63418f1741afbbeee3afc101d088",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/yogurt.png",
+    "name": "Yogurt"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-07-05T01:06:00.765Z",
+    "createdAt": "2016-07-05T01:02:44.395Z",
+    "version": "AAAAAAAADDs=",
+    "id": "ac5c9a32-70e6-420a-993a-9fb431d21926",
+    "parentId": "085904c44c5d4913b1b3f4e24e347103",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/photo-96f7187d-4133-4a49-9435-ec0c248563be.png",
+    "name": "Postre"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T15:05:14.202Z",
+    "createdAt": "2016-06-20T15:05:14.202Z",
+    "version": "AAAAAAAACjY=",
+    "id": "c39d6a2cd48b4207a1a0f7fe583f31ca",
+    "parentId": "4490983d5c8f43b9a5375a59b4e5c52f",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/pan.png",
+    "name": "Pan"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:51:07.102Z",
+    "createdAt": "2016-06-20T14:51:07.102Z",
+    "version": "AAAAAAAACiY=",
+    "id": "cbd38fe54fc445dfa0d522daa1c3d6b2",
+    "parentId": "8b1c3b3ca9434eeeae7f486579ff06e9",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/parauntar.png",
+    "name": "Para untar"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:47:16.924Z",
+    "createdAt": "2016-06-20T14:47:16.908Z",
+    "version": "AAAAAAAACiA=",
+    "id": "d2afbad09e8e42e19b2af4a5390a4d4d",
+    "parentId": "8b1c3b3ca9434eeeae7f486579ff06e9",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/azucar.png",
+    "name": "Azúcar, sal y condimentos"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:50:30.992Z",
+    "createdAt": "2016-06-20T14:50:30.992Z",
+    "version": "AAAAAAAACiQ=",
+    "id": "e2bf69d77b124db895181a82f4287f5b",
+    "parentId": "8b1c3b3ca9434eeeae7f486579ff06e9",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/arepas.png",
+    "name": "Arepas y harinas"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:49:40.85Z",
+    "createdAt": "2016-06-20T14:49:40.85Z",
+    "version": "AAAAAAAACiI=",
+    "id": "f242ff0318a14a1f921c133ee64e7995",
+    "parentId": "8b1c3b3ca9434eeeae7f486579ff06e9",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/enlatados.png",
+    "name": "Enlatados y conservas"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T15:00:49.32Z",
+    "createdAt": "2016-06-20T15:00:49.32Z",
+    "version": "AAAAAAAACjA=",
+    "id": "f58994eeffad4b29a2a91ca9985387db",
+    "parentId": "a07a63418f1741afbbeee3afc101d088",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/queso.png",
+    "name": "Queso"
+  },
+  {
+    "deleted": false,
+    "updatedAt": "2016-06-20T14:53:42.075Z",
+    "createdAt": "2016-06-20T14:53:42.075Z",
+    "version": "AAAAAAAACig=",
+    "id": "fb07f9aca3334aea9ff6c72945c184d2",
+    "parentId": "8b1c3b3ca9434eeeae7f486579ff06e9",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/chocolate.png",
+    "name": "Chocolate y café"
+  }
+]

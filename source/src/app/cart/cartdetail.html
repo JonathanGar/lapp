@@ -1,0 +1,72 @@
+<div class="wide-center fixed-header-margin">
+	<div class="information-blocks">
+		<div class="row">
+			<div class="col-sm-9 information-entry">
+				<h3 class="cart-column-title size-1">Productos</h3>
+
+				<div class="traditional-cart-entry style-1" ng-repeat="product in $root.cart.products">
+					<a class="image" ui-sref="products({ id: product.id })"><img alt="" src="{{product.image}}"></a>
+					<div class="content">
+						<div class="cell-view">
+							<!--<a class="tag" href="#">woman clothing</a>-->
+							<a class="title" ui-sref="products({ id: product.id })">{{product.name}}</a>
+							<div class="inline-description">{{product.description}}</div>
+							<div class="price">
+								<div class="current">{{product.value* product.quantityToAdd | currency :$:0}}</div>
+							</div>
+							<div class="quantity-selector detail-info-entry">
+								<div class="detail-info-entry-title">Cantidad</div>
+								<div class="entry number-minus" ng-click="cart.spinnerDown(product)">&nbsp;</div>
+								<div class="entry number">{{product.quantityToAdd}}</div>
+								<div class="entry number-plus" ng-click="cart.spinnerUp(product)">&nbsp;</div>
+								<a class="button style-17" ng-click="cart.removeFromCart(product.id)">Quitar</a>
+								<!--<a class="button style-15">Actualizar</a>-->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-if="!$root.cart.products.length" class="message-box message-info">
+					<div class="message-icon"><i class="fa fa-exclamation"></i></div>
+					<div class="message-text"><b>Hola!</b> Para ver productos acá primero agregalos al carrito.</div>
+				</div>
+			</div>
+			<div class="col-sm-3 information-entry">
+				<h3 class="cart-column-title size-1" style="text-align: center;">Subtotal</h3>
+				<div class="sidebar-subtotal">
+					<div class="price-data">
+						<div class="main">{{$root.cart.subTotal | currency :$:0}}</div>
+						<!--<div class="title">Excluding tax &amp; shipping</div>
+						<div class="subtitle">ORDERS WILL BE PROCESSED IN USD</div>-->
+					</div>
+					<div class="additional-data">
+						<div class="title">Ingresa tus cupones de descuento</div>
+						<textarea class="simple-field size-1"></textarea>
+						<a ui-sref="checkout" class="button style-10">Pagar</a>
+					</div>
+				</div>
+				<!--<div class="block-title size-1">Get shipping estimates</div>
+				<form>
+					<label>Country</label>
+					<div class="simple-drop-down simple-field size-1">
+						<select>
+																<option>United States</option>
+																<option>Great Britain</option>
+																<option>Canada</option>
+														 </select>
+					</div>
+					<label>State</label>
+					<div class="simple-drop-down simple-field size-1">
+						<select>
+																<option>Alabama</option>
+																<option>Alaska</option>
+																<option>Idaho</option>
+														 </select>
+					</div>
+					<label>Zip Code</label>
+					<input type="text" value="" placeholder="Zip Code" class="simple-field size-1">
+					<div class="button style-16" style="display: block; margin-top: 10px;">calculate shipping<input type="submit" /></div>
+				</form>-->
+			</div>
+		</div>
+	</div>
+</div>

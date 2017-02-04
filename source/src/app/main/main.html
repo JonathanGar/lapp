@@ -1,0 +1,48 @@
+<div cg-busy="{promise:main.myPromise,message:'Cargando los productos'}"></div>
+<div class="wide-center fixed-header-margin">
+
+    <div class="products-slider-banner" ng-repeat="catalog in main.catalogs">
+        <a ui-sref="categories({ id: catalog.id })" style="background-image: url('{{catalog.imageUrl}}'); background-color: #ed802f;" class="promo-banner-box">
+            <span class="promo-text">
+      <span class="title">Lo más fresco</span>
+            <span class="description">{{catalog.name}}</span>
+            <span class="detail-link">ver productos</span>
+            </span>
+        </a>
+        <div class="products-swiper">
+            <ks-swiper-container initial-slide="1" loop="false" show-nav-buttons="false" slides-per-view="4" space-between="5" pagination-clickable="false">
+                <ks-swiper-slide class="swiper-slide" ng-repeat="product in catalog.products">
+                    <div class="paddings-container" data-id="{{product.id}}" style="padding-top:20px;">
+                        <a ui-sref="products({ id: product.id })">
+                            <div class="product-slide-entry" style="height: 303px;">
+                                <div class="product-image">
+                                    <img ng-src="{{product.imageUrl}}" style="width: 172px; height: 172px;" alt="" />
+                                    <!--<a class="top-line-a left"><i class="fa fa-retweet"></i></a>-->
+                                    <a class="top-line-a right" ng-click="main.AddFavorite(product)"><i class="fa fa-heart"></i></a>
+                                    <div class="bottom-line">
+                                        <a class="bottom-line-a" ng-click="main.AddProduct(product)">
+                                            <i class="fa fa-shopping-cart"></i> Agregar</a>
+                                    </div>
+                                </div>
+                                <a class="title" href="#">{{product.name}}</a>
+                                <div class="rating-box">
+                                    <div class="star"><i class="fa fa-star"></i></div>
+                                    <div class="star"><i class="fa fa-star"></i></div>
+                                    <div class="star"><i class="fa fa-star"></i></div>
+                                    <div class="star"><i class="fa fa-star"></i></div>
+                                    <div class="star"><i class="fa fa-star"></i></div>
+                                </div>
+                                <div class="price">
+                                    <div class="current">{{ product.value | currency:"$":0 }}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!--/div>
+                    </a>
+                  </div-->
+                </ks-swiper-slide>
+            </ks-swiper-container>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<div class="wide-center fixed-header-margin" style="margin-top:200px;">
+  <div class="breadcrumb-box">
+    <a href="/">Home</a>
+    <a href="#">Mi pedidos</a>
+  </div>
+  <div class="information-blocks">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+					<div class="panel-body">
+						<div class="pull-right">
+							<div class="btn-group">
+                <button type="button" class="btn btn-tramite btn-filter" data-target="badge-entregado">
+                  En Tramite
+                </button>
+								<button type="button" class="btn btn-pendiente btn-filter" data-target="badge-entregado">
+                  Entregado
+                </button>
+								<button type="button" class="btn btn-danger btn-filter" data-target="pendiente">
+                  Pendiente
+                </button>
+								<button type="button" class="btn btn-cancelado btn-filter" data-target="badge-cancelado">
+                  Cancelado
+                </button>
+								<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+							</div>
+						</div>
+						<div class="table-container">
+							<table class="table table-filter">
+								<tbody>
+									<tr data-status="badge-entregado" data-id="12121" ui-sref="order-detail({ id: 123})">
+										<td>
+											<div class="media">
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Pedido: Lorem Impsum
+														<span class="pull-right badge-entregado">Entregado</span>
+													</h4>
+													<p class="summary">Domiciliario: Juan Perez</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="pendiente">
+										<td>
+											<div class="media">
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Pedido: Lorem Impsum
+														<span class="pull-right pendiente">(Pendiente)</span>
+													</h4>
+													<p class="summary">Domiciliario: Juan Perez</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="badge-cancelado">
+										<td>
+											<div class="media">
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Pedido: Lorem Impsum
+														<span class="pull-right badge-cancelado">Cancelado</span>
+													</h4>
+													<p class="summary">Domiciliario: Juan Perez</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="badge-entregado" >
+										<td>
+											<div class="media">
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Pedido: Lorem Impsum
+														<span class="pull-right badge-entregado">Entregado</span>
+													</h4>
+													<p class="summary">Domiciliario: Juan Perez</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="pendiente">
+										<td>
+											<div class="media">
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Pedido: Lorem Impsum
+														<span class="pull-right pendiente">(Pendiente)</span>
+													</h4>
+													<p class="summary">Domiciliario: Juan Perez</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>

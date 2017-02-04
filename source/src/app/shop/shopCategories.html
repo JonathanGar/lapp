@@ -1,0 +1,97 @@
+<div class="wide-center fixed-header-margin" style="margin-top:200px;">
+  <div class="breadcrumb-box">
+    <a href="#">Inicio</a>
+    <a href="#">Despensa</a>
+  </div>
+  <div class="blocks">
+    <div class="row">
+      <div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
+        <div class="page-selector">
+          <div class="description">Página {{shop.pager.currentPage}} de {{shop.totalPages}}</div>
+          <div class="pages-box" ng-if="shop.pager.pages.length">
+            <a ng-repeat="page in shop.pager.pages" ng-class="{active:shop.pager.currentPage === page}" ng-click="shop.setPage(page)">{{page}}</a>
+          </div>
+          <div class="clear"></div>
+
+          <div class="shop-grid-controls">
+            <div class="entry">
+              <div class="inline-text">Ordenar por</div>
+              <div class="simple-drop-down">
+                <select>
+                          <option>Precio</option>
+                          <option>Categoria</option>
+</select>
+              </div>
+              <div class="sort-button"></div>
+            </div>
+            <div class="entry">
+              <div class="view-button active grid"><i class="fa fa-th"></i></div>
+              <div class="view-button list"><i class="fa fa-list"></i></div>
+            </div>
+            <!--<div class="entry">
+              <div class="inline-text">Show</div>
+              <div class="simple-drop-down" style="width: 75px;">
+                <select>
+                          <option>12</option>
+                          <option>20</option>
+                          <option>30</option>
+                          <option>40</option>
+                          <option>all</option>
+                       </select>
+              </div>
+              <div class="inline-text">per page</div>
+            </div>-->
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="row shop-grid grid-view">
+          <div class="col-md-3 col-sm-4 shop-grid-item" ng-repeat="product in shop.catalogsProducts">
+            <div class="product-slide-entry shift-image">
+              <!--<div class="hot-mark">hot</div>-->
+              <div class="product-image">
+                <img ng-src="{{product.image}}" alt="" />
+                <img src="assets/images/product-minimal-11.jpg" alt="" />
+                <div class="bottom-line left-attached">
+                  <a class="bottom-line-a square"><i class="fa fa-shopping-cart"></i></a>
+                  <a class="bottom-line-a square"><i class="fa fa-heart"></i></a>
+                </div>
+              </div>
+              <!--<a class="tag" href="#">Men clothing</a>-->
+              <a class="title" href="#">{{product.name}}</a>
+              <div class="price">
+                <div class="current">{{ product.value | currency:"$":0 }}</div>
+              </div>
+              <div class="list-buttons">
+                <a class="button style-10">Add to cart</a>
+                <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
+
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="page-selector">
+          <div class="description">Página {{shop.pager.currentPage}} de {{shop.totalPages}}</div>
+          <div class="pages-box" ng-if="shop.pager.pages.length">
+            <a ng-repeat="page in shop.pager.pages" ng-class="{active:shop.pager.currentPage === page}" ng-click="shop.setPage(page)">{{page}}</a>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8 blog-sidebar">
+        <div class="sidebar-navigation">
+          <div class="title">Categoria Despensa<i class="fa fa-angle-down"></i></div>
+          <div class="list">
+            <a ng-repeat="catalog in shop.catalogs" class="entry" ng-click="shop.events.getSubCategory(catalog.id)" data-id="{{catalog.id}}">
+              <span><i class="fa fa-angle-right"></i>{{catalog.name}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+</div>

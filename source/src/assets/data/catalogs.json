@@ -1,0 +1,182 @@
+[
+  {
+    "id": "8b1c3b3ca9434eeeae7f486579ff06e9",
+    "name": "DESPENSA",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/DESPENSA.png",
+    "products": [
+      {
+        "id": "93be6da9072141fc94dd3f6b92a345f1",
+        "name": "Oliosoya",
+        "description": null,
+        "image": "http://www.exito.com/images/products/465/0000500914764465/0000500915975751_lrg_a.jpg",
+        "quantity": 750,
+        "unitMeasure": "ml",
+        "value": 5500,
+        "promotion": null
+      },
+      {
+        "id": "2da0dd88ae244d6196b4fccd63191a9d",
+        "name": "Pastas La muñeca",
+        "description": null,
+        "image": "http://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0016/7535/brand.gif?itok=N0LH7ueC",
+        "quantity": 250,
+        "unitMeasure": "grms",
+        "value": 1800,
+        "promotion": null
+      },
+      {
+        "id": "69a9858ab6844aecb0b76256ad661496",
+        "name": "Spaguetis Doria",
+        "description": null,
+        "image": "http://amercar.co/35-home_default/spaghetti-doria-200g.jpg",
+        "quantity": 250,
+        "unitMeasure": "grms",
+        "value": 1000,
+        "promotion": null
+      },
+      {
+        "id": "3d7088fc00b143538d83a6a0f9aa5e14",
+        "name": "Pastas Divella",
+        "description": null,
+        "image": "http://www.continental-food.co.uk/images/cqs-products/Bakery/logos/Divella-logo.jpg",
+        "quantity": 250,
+        "unitMeasure": "grms",
+        "value": 1300,
+        "promotion": null
+      },
+      {
+        "id": "be312e4d824c4314ac256587c0fcf5fc",
+        "name": "Azúcar Vivó",
+        "description": null,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9QOBEwvJNVCyTWXcyBgaiVFoxJUgvnHfl75dEmMnkoLUDcbWYqQ",
+        "quantity": 250,
+        "unitMeasure": "grms",
+        "value": 1500,
+        "promotion": null
+      }
+    ],
+    "promotion": null
+  },
+  {
+    "id": "a07a63418f1741afbbeee3afc101d088",
+    "name": "LÁCTEOS Y HUEVO",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/LACTEOS.png",
+    "products": [
+      {
+        "id": "f08e76f589b04901b8b4762ee19ec5b5",
+        "name": "Bonella",
+        "description": "",
+        "image": "http://files.lacanastavirtual.webnode.es/system_preview_200000004-e4ad7e6a26/BO50__81630_zoom.jpg",
+        "quantity": 500,
+        "unitMeasure": "grms",
+        "value": 8500,
+        "promotion": {
+          "value": 30,
+          "type": "Percentage"
+        }
+      },
+      {
+        "id": "6d1b84fd8728454cacae7db52f76353d",
+        "name": "Leche deslactosada digestive ",
+        "description": "con probioticos",
+        "image": "https://s3-us-west-2.amazonaws.com/mercadoni/live/41cef576473af03ef330a4c402e568a562f6b838/medium_41cef576473af03ef330a4c402e568a562f6b838.jpg",
+        "quantity": 1100,
+        "unitMeasure": "ml",
+        "value": 3500,
+        "promotion": null
+      },
+      {
+        "id": "91b3069f41be464aa81604d3105725fd",
+        "name": "Leche semidescremada ",
+        "description": "fresca x 2 litros",
+        "image": "https://s3-us-west-2.amazonaws.com/mercadoni/live/93412eeec6b136ee5f16469025bf22df7f507e27/medium_93412eeec6b136ee5f16469025bf22df7f507e27.jpg",
+        "quantity": 2,
+        "unitMeasure": "Lt",
+        "value": 9600,
+        "promotion": null
+      },
+      {
+        "id": "f4d472c1ffa846e3bba3b490d13efe2c",
+        "name": "Leche Baja Grasa",
+        "description": "caja",
+        "image": "https://s3-us-west-2.amazonaws.com/mercadoni/live/104a03113429a1adb54513e20fb175b4481fa9cf/medium_104a03113429a1adb54513e20fb175b4481fa9cf.jpg",
+        "quantity": 1000,
+        "unitMeasure": "ml",
+        "value": 4400,
+        "promotion": null
+      },
+      {
+        "id": "fd9d6e0b1a334d55bc9055732b1022b5",
+        "name": "Leche semidescremada",
+        "description": "x 1300ml",
+        "image": "https://s3-us-west-2.amazonaws.com/mercadoni/live/51758f9b059fe17212353ffdaac8ca86887d83da/medium_51758f9b059fe17212353ffdaac8ca86887d83da.jpg",
+        "quantity": 1300,
+        "unitMeasure": "ml",
+        "value": 4200,
+        "promotion": null
+      }
+    ],
+    "promotion": {
+      "value": 5,
+      "type": "Percentage"
+    }
+  },
+  {
+    "id": "4490983d5c8f43b9a5375a59b4e5c52f",
+    "name": "PANADERÍA Y GALLETAS",
+    "imageUrl": "https://lapptiendadev.blob.core.windows.net/images/PANADERIA.png",
+    "products": [
+      {
+        "id": "00436bb74de74e5baa078f72bfc0df82",
+        "name": "Leche Entera fresca ",
+        "description": "bolsa 1 Litro",
+        "image": "https://s3-us-west-2.amazonaws.com/mercadoni/live/794cac8b0d071484b33f9b05fdec47b3dea5763b/medium_794cac8b0d071484b33f9b05fdec47b3dea5763b.jpg",
+        "quantity": 1,
+        "unitMeasure": "Lt",
+        "value": 2500,
+        "promotion": null
+      },
+      {
+        "id": "085798184d6648ceaa07ee93b3d6d5ee",
+        "name": "Pan Fit Blanco",
+        "description": "descripcion",
+        "image": "https://s3-us-west-2.amazonaws.com/mercadoni/live/562aa31039733f40001a1c46/medium_562aa31039733f40001a1c46_d9aeb5.jpg",
+        "quantity": 1,
+        "unitMeasure": "unidad",
+        "value": 4800,
+        "promotion": null
+      },
+      {
+        "id": "d102a45b146846919816224913fa0be4",
+        "name": "Galletas Saltin Noel",
+        "description": null,
+        "image": "http://images.farmatodo.com/bduc/img/co/item/small/co_items_1036070_small_standart_1429648266548.jpg",
+        "quantity": 50,
+        "unitMeasure": "grms",
+        "value": 1000,
+        "promotion": null
+      },
+      {
+        "id": "ed5d35a54f714b25b049b7c4d6883b4c",
+        "name": "Pan Bimbo",
+        "description": null,
+        "image": "https://imageskomparing1.static-k.com/products/ERO2842854.jpg",
+        "quantity": 50,
+        "unitMeasure": "grms",
+        "value": 3200,
+        "promotion": null
+      },
+      {
+        "id": "72beae2d107a40cc937fce2c4fd3bcb3",
+        "name": "Tostadas",
+        "description": null,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLbK9eLJQPA1pAme-ijDEW_0eJAGfLzGZTW5hnIWKcb00C_9NrjQ",
+        "quantity": 50,
+        "unitMeasure": "grms",
+        "value": 2500,
+        "promotion": null
+      }
+    ],
+    "promotion": null
+  }
+]
