@@ -2,7 +2,7 @@
 
     angular
         .module('lappweb')
-        .service('ProductService', ['RESOURCE_API', 'RESOURCE_API_TEMP', '$http', '$q', '$filter', function(RESOURCE_API, RESOURCE_API_TEMP, $http, $q, $filter) {
+        .service('ProductService', ['RESOURCE_API', 'RESOURCE_API_TEMP', 'MED_CODE', '$http', '$q', '$filter', function(RESOURCE_API, RESOURCE_API_TEMP, MED_CODE, $http, $q, $filter) {
 
             var service = {
                 get: get,
@@ -57,7 +57,7 @@
 
             function getDetail(id) {
                 var deferred = $q.defer();
-                $http.get(RESOURCE_API + 'api/catalog/71e60b8aab914e8e8ae2d532ca73cb83')
+                $http.get(RESOURCE_API + 'api/catalog/' + MED_CODE)
                     //$http.get('./assets/data/catalogs.json')
                     .success(function(product) {
                         deferred.resolve(product);

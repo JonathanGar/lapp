@@ -2,8 +2,8 @@
 
     angular
         .module('lappweb')
-        .service('MainService', ['GRAPH_API_URL', 'RESOURCE_API', 'RESOURCE_API_TOKEN', '$http', '$q', '$filter', '$rootScope',
-            function(GRAPH_API_URL, RESOURCE_API, RESOURCE_API_TOKEN, $http, $q, $filter, $rootScope) {
+        .service('MainService', ['GRAPH_API_URL', 'RESOURCE_API', 'RESOURCE_API_TOKEN', 'MED_CODE', '$http', '$q', '$filter', '$rootScope',
+            function(GRAPH_API_URL, RESOURCE_API, RESOURCE_API_TOKEN, MED_CODE, $http, $q, $filter, $rootScope) {
 
                 var service = {
                     fillAuthData: fillAuthData,
@@ -112,7 +112,7 @@
                     var deferred = $q.defer();
                     //$http.get('./assets/data/catalogs.json')
                     $http({
-                            url: RESOURCE_API + "api/catalog/71e60b8aab914e8e8ae2d532ca73cb83",
+                            url: RESOURCE_API + "api/catalog/" + MED_CODE,
                             method: "GET",
                         })
                         .success(function(catalogs) {

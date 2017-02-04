@@ -2,7 +2,7 @@
 
     angular
         .module('lappweb')
-        .service('ShopService', ['RESOURCE_API', '$http', '$q', '$filter', function(RESOURCE_API, $http, $q, $filter) {
+        .service('ShopService', ['RESOURCE_API', 'MED_CODE', '$http', '$q', '$filter', function(RESOURCE_API, MED_CODE, $http, $q, $filter) {
 
             $http.defaults.useXDomain = true;
             delete $http.defaults.headers.common['X-Requested-With'];
@@ -15,7 +15,7 @@
 
             function getCategories(id) {
                 var deferred = $q.defer();
-                $http.get(RESOURCE_API + 'api/catalog/category/' + id + "/71e60b8aab914e8e8ae2d532ca73cb83")
+                $http.get(RESOURCE_API + 'api/catalog/category/' + id + "/" + MED_CODE)
                     .success(function(product) {
                         deferred.resolve(product);
                     })
@@ -28,7 +28,7 @@
 
             function getSubCategory(id) {
                 var deferred = $q.defer();
-                $http.get(RESOURCE_API + 'catalog/subcategory/' + id)
+                $http.get(RESOURCE_API + 'catalog/subcategory/' + id + "/" + MED_CODE)
                     .success(function(product) {
                         deferred.resolve(product);
                     })
