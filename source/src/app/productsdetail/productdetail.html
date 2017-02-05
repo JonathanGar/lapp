@@ -1,15 +1,11 @@
 <div class="wide-center fixed-header-margin fixed-div" style="margin-top:200px;">
     <div class="information-blocks">
-        <pre>
-			 {{detail.product | json}}
-			 detail.quantity: {{detail.product.quantity}}
-		 </pre>
     </div>
     <div class="information-blocks">
         <div class="row">
             <div class="col-sm-5 col-md-4 col-lg-5 information-entry">
                 <div class="product-preview-box">
-                    <div class="swiper-container product-preview-swiper" data-autoplay="0" data-loop="1" data-speed="500" data-center="0" data-slides-per-view="1">
+                    <div class="swiper-container product-preview-swiper" style="left: 45%" data-autoplay="0" data-loop="1" data-speed="500" data-center="0" data-slides-per-view="1">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="product-zoom-image">
@@ -71,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-7 col-md-4 information-entry">
+            <div class="col-sm-7 col-md-4 information-entry" style="padding-left: 25%;">
                 <div class="product-detail-box">
                     <h1 class="product-title">{{detail.product.name}}</h1>
                     <!--<h3 class="product-subtitle">Loremous Clothing</h3>-->

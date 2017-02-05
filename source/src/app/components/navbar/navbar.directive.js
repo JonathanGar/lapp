@@ -139,7 +139,7 @@
                 $('body').addClass('opened-menu');
                 $(this).closest('header').addClass('opened');
                 $('.opened .close-header-layer').fadeIn(300);
-                closePopups();
+                //closePopups();
                 return false;
             });
 
