@@ -27,7 +27,6 @@
         };
 
         vm.spinnerUp = function(product) {
-            debugger;
             //vm.quantity = CartService.addProductUnity(product, 1);
             vm.quantity = CartService.addProductUnity(product, vm.quantity);
         };
@@ -53,8 +52,13 @@
                         }
                     });
                 });
+                debugger;
+                if (result) {
+                    vm.product = result;
+                } else {
+                    vm.nodispo = true;
+                }
 
-                vm.product = result;
             });
         }
 

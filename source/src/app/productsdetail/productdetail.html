@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="col-sm-7 col-md-4 information-entry" style="padding-left: 25%;">
-                <div class="product-detail-box">
+                <div class="product-detail-box" ng-hide="detail.nodispo">
                     <h1 class="product-title">{{detail.product.name}}</h1>
                     <!--<h3 class="product-subtitle">Loremous Clothing</h3>-->
                     <div class="product-description detail-info-entry">{{detail.product.description}}</div>
@@ -83,12 +83,16 @@
                         <div class="entry number-plus" ng-click="detail.spinnerUp(detail.product)" ng-disabled="{{detail.quantity==detail.product.quantity}}" title="{{detail.quantity==detail.product.quantity? 'No hay más unidades para adicionar':''}} ">&nbsp;</div>
                     </div>
                     <div class="detail-info-entry">
-                        <a class="button style-10" ng-click="detail.AddProduct(detail.product,detail.quantity)">Añadir al Carrito</a>
+                        <a class="button style-10" style="padding-top: 0px;padding-bottom: 0px;" ng-click="detail.AddProduct(detail.product,detail.quantity)">Añadir al Carrito</a>
                         <a class="button style-11" ng-click="detail.AddFavorite(detail.product)"><i class="fa fa-heart "></i> Añadir a Favoritos</a>
                         <div class="clear "></div>
                     </div>
                 </div>
+                <div ng-show="detail.nodispo">
+                    Este producto no está disponible en el momento. <a>regresar</a>
+                </div>
             </div>
+
             <div class="clear visible-xs visible-sm "></div>
             <div class="col-md-4 col-lg-3 information-entry product-sidebar ">
                 <div class="row ">

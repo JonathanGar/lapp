@@ -15,8 +15,8 @@
 
             function get() {
                 var deferred = $q.defer();
-                //$http.get('https://lapptienda-api-dev.azurewebsites.net/tables/products')
-                $http.get('./assets/data/products.json')
+                $http.get(RESOURCE_API + "api/products/Active")
+                    //$http.get('./assets/data/products.json')
                     .success(function(products) {
                         deferred.resolve(products);
                     })

@@ -20,9 +20,9 @@
             </div>-->
             <div class="departmets-drop-down hidden-xs">
                 <div class="title"><i class="fa fa-reorder"></i>
-                  <i class="fa fa-close"></i> Comprar por categorias
+                    <i class="fa fa-close"></i> Comprar por categorias
                 </div>
-                <ul class="list" >
+                <ul class="list">
                     <li ng-repeat="categorie in nav.categories">
                         <a ui-sref="categories({ id: categorie.id })"><i class="fa fa-angle-right"></i>{{categorie.name | uppercase}}</a>
                     </li>
@@ -33,7 +33,7 @@
         </div>
         <div class="header-middle">
             <div class="logo-wrapper">
-                <a id="logo" href="/"><img src="./../assets/images//logo.png" alt="Logo Lapp Tienda" /></a>
+                <a id="logo" href="/"><img src="./../assets/images/logo.png" alt="Logo Lapp Tienda" /></a>
             </div>
             <div class="middle-entry">
                 <div class="search-box">
@@ -52,13 +52,10 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="search-field">
                             <!--{{nav.products|json}}-->
-                            <input type="text" ng-model="nav.productSelected" placeholder="Buscar Producto"
-                              uib-typeahead="product for products in nav.products | filter:{name:$viewValue}"
-                              typeahead-template-url="customTemplate.html" class="form-control" typeahead-show-hint="false"
-                                typeahead-min-length="1" typeahead-on-select="nav.onSelect($item, $model, $label)"/>
+                            <input type="text" ng-model="nav.productSelected" placeholder="Buscar Producto" uib-typeahead="product for products in nav.products | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" typeahead-show-hint="false"
+                                typeahead-min-length="1" typeahead-on-select="nav.onSelect($item, $model, $label)" />
                             <!--<input type="text" value="" placeholder="Buscar Producto" />-->
                         </div>
                     </form>
@@ -66,20 +63,20 @@
             </div>
             <div class="right-entries">
                 <a class="header-functionality-entry open-search-popup" href="#">
-                  <i class="fa fa-search"></i>
-                  <span>Buscar</span>
+                    <i class="fa fa-search"></i>
+                    <span>Buscar</span>
                 </a>
                 <a class="header-functionality-entry" ui-sref="orders">
-                  <i class="fa fa-copy"></i><span>Mis pedidos</span>
+                    <i class="fa fa-copy"></i><span>Mis pedidos</span>
                 </a>
-                <a class="header-functionality-entry"  ui-sref="favorites">
-                  <i class="fa fa-heart-o"></i>
-                  <span>Favoritos</span>
+                <a class="header-functionality-entry" ui-sref="favorites">
+                    <i class="fa fa-heart-o"></i>
+                    <span>Favoritos</span>
                 </a>
                 <a class="header-functionality-entry open-cart-popup" ui-sref="cart">
-                  <i class="fa fa-shopping-cart"></i>
-                  <span>Mi Carrito</span>
-                  <b>{{$root.cart.subTotal | currency :$:0}}</b>
+                    <i class="fa fa-shopping-cart"></i>
+                    <span>Mi Carrito</span>
+                    <b>{{$root.cart.subTotal | currency :$:0}}</b>
                 </a>
             </div>
         </div>

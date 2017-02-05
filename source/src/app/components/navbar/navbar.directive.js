@@ -32,17 +32,19 @@
             // $rootScope.$on('productAdded', function(event) {
             // });
 
-            /*MainService.obtainAccessToken().then(function(resp) {
+            MainService.obtainAccessToken().then(function(resp) {
                 //Categorias menu
-                MainService.catalogs(resp.access_token).then(function(data) {
+                MainService.catalogs().then(function(data) {
                     debugger;
                     vm.categories = data;
                 }).catch(function(err) {
-                    debugger;
+                    console.log(err);
                 });
 
                 ProductService.get().then(function(data) {
-                    vm.products = resp;
+                    vm.products = data;
+                }).catch(function(err) {
+                    console.log(err);
                 });
 
                 vm.onSelect = function($item, $model, $label) {
@@ -50,7 +52,7 @@
                 };
             }).catch(function(err) {
                 debugger;
-            });*/
+            });
 
 
             var winW, winH, winScr, _isresponsive, _ismobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i);
@@ -63,8 +65,6 @@
                 winH = window.innerHeight;
                 if (angular.element(document.querySelector('.menu-button')).is(':visible')) _isresponsive = true;
                 else _isresponsive = false;
-
-
             }
 
             /*=================================*/
@@ -176,8 +176,6 @@
                 thisDropDown.find('.title span').text($(this).text());
             });
 
-
-
             angular.element(document.querySelector('.departmets-drop-down .title')).on('click', function() {
                 $(this).parent().find('.list').slideToggle(300);
                 $(this).toggleClass('active');
@@ -187,8 +185,6 @@
                 $(this).find('.list').slideUp(300);
                 $(this).find('.title').removeClass('active');
             });
-
-
         }
     }
 

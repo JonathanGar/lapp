@@ -108,7 +108,7 @@
                     return deferred.promise;
                 };
 
-                function catalogs(token) {
+                function catalogs() {
                     var deferred = $q.defer();
                     //$http.get('./assets/data/catalogs.json')
                     $http({
