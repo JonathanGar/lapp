@@ -5,10 +5,10 @@
         .module('lappweb')
         .controller('ShopCategoriesController', ShopCategoriesController);
 
-    ShopCategoriesController.$inject = ['ShopService', '$rootScope', '$stateParams', 'PagerService'];
+    ShopCategoriesController.$inject = ['FavoritesService', 'ShopService', 'CartService', '$rootScope', '$stateParams', 'PagerService', 'toastr'];
 
     /** @ngInject */
-    function ShopCategoriesController(ShopService, $rootScope, $stateParams, PagerService) {
+    function ShopCategoriesController(FavoritesService, ShopService, CartService, $rootScope, $stateParams, PagerService, toastr) {
         var vm = this;
 
         vm.pageSize = 12;
@@ -17,6 +17,13 @@
         vm.pager = {};
 
         vm.events = {
+            /*getCategory: function(id) {                
+                ShopService.getCategories(id).then(function(data) {
+                    if (data.length > 0) {
+                        vm.category = data[0].products;
+                    }
+                });
+            },*/
             getSubCategory: function(id) {
                 ShopService.getSubCategory(id).then(function(data) {
                     if (data.length > 0) {
@@ -27,9 +34,11 @@
         };
 
         if ($stateParams.id) {
-            ShopService.get($stateParams.id).then(function(catalogs) {
+            ShopService.getCategories($stateParams.id).then(function(catalogs) {
+                vm.catalogName = JSON.parse(localStorage.getItem("catalogsDict"))[$stateParams.id];
                 vm.catalogs = catalogs;
                 vm.catalogsProducts = [];
+                //vm.events.getCategory($stateParams.id);
                 _(vm.catalogs).forEach(function(catalog) {
                     vm.catalogsProducts = vm.catalogsProducts.concat(catalog.products);
                     if (angular.isDefined(vm.catalogsProducts)) {
@@ -60,9 +69,18 @@
             }
         };
 
-        vm.AddProduct = function(product, quantity) {
+        /*vm.AddProduct = function(product, quantity) {
             product.quantityToAdd = quantity;
-            $rootScope.$emit('productAdded', product);
+            $rootScope.$emit('productAdded', product);            
+        };*/
+        vm.AddProduct = function(product) {
+            CartService.add(product, 1);
+            toastr.success('Producto añadido al carrito', 'Información');
+        };
+
+        vm.AddFavorite = function(product) {
+            FavoritesService.add(product);
+            toastr.success('Producto añadido a favoritos', 'Información');
         };
 
         vm.setPage = function(page) {
@@ -75,6 +93,6 @@
 
             // get current page of items
             vm.items = vm.catalogsProducts.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
-        }
+        };
     }
 })();

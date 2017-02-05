@@ -15,11 +15,11 @@
                     <div class="wishlist-entry">
                         <div class="column-1">
                             <div class="traditional-cart-entry">
-                                <a class="image" href="#"><img alt="" src="{{product.imageUrl}}"></a>
+                                <a class="image" ui-sref="products({ id: product.id })"><img alt="" src="{{product.imageUrl}}"></a>
                                 <div class="content">
                                     <div class="cell-view">
                                         <!--<a class="tag" href="#">woman clothing</a>-->
-                                        <a class="title" href="#">{{product.name}}</a>
+                                        <a class="title" ui-sref="products({ id: product.id })">{{product.name}}</a>
                                         <div class="inline-description">{{product.description}}</div>
                                         <div class="price detail-info-entry">
                                             <!--<div class="prev">$90,00</div>-->

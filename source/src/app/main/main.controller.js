@@ -36,6 +36,11 @@
 
         MainService.obtainAccessToken().then(function(resp) {
             vm.myPromise = MainService.catalogs().then(function(resp) {
+                var catalogsDict = {};
+                _.forEach(resp, function(value) {
+                    catalogsDict[value.id] = value.name;
+                });
+                localStorage.setItem("catalogsDict", JSON.stringify(catalogsDict));
                 vm.catalogs = resp;
             });
         }).catch(function(err) {

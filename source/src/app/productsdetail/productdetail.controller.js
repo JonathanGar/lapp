@@ -52,19 +52,22 @@
                         }
                     });
                 });
-                debugger;
+
                 if (result) {
                     vm.product = result;
                 } else {
                     vm.nodispo = true;
+                    ProductService.get().then(function(data) {
+                        debugger;
+                        //vm.products = data;
+                        vm.product = _.find(data, {
+                            'id': $stateParams.id
+                        });
+                    }).catch(function(err) {
+                        console.log(err);
+                    });
                 }
-
             });
         }
-
-
-
-
-
     }
 })();

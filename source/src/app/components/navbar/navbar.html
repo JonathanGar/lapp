@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <!-- HEADER -->
 <div class="header-wrapper style-9">
     <header class="type-1">
@@ -47,7 +48,7 @@
                             <div class="list">
                                 <div class="overflow">
                                     <div ng-repeat="categorie in nav.categories" class="category-entry">
-                                        {{categorie.name}}
+                                        <a ui-sref="categories({ id: categorie.id })"> {{categorie.name}} </a>
                                     </div>
                                 </div>
                             </div>

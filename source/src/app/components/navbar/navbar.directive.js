@@ -35,7 +35,6 @@
             MainService.obtainAccessToken().then(function(resp) {
                 //Categorias menu
                 MainService.catalogs().then(function(data) {
-                    debugger;
                     vm.categories = data;
                 }).catch(function(err) {
                     console.log(err);
@@ -51,7 +50,7 @@
                     $state.go('products', { id: $item.id });
                 };
             }).catch(function(err) {
-                debugger;
+                console.log(err);
             });
 
 
