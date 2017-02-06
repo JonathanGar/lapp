@@ -25,9 +25,9 @@
                         </div>
                     </div>
                 </div>
-                <div ng-if="!$root.cart.products.length" class="message-box message-info">
+                <div ng-if="$root.cart.products.length == 0" class="message-box message-info">
                     <div class="message-icon"><i class="fa fa-exclamation"></i></div>
-                    <div class="message-text"><b>Hola!</b> Para ver productos acá primero agregalos al carrito.</div>
+                    <div class="message-text"><b>¡Hola!</b> Para ver productos acá primero agregalos al carrito.</div>
                 </div>
             </div>
             <div class="col-sm-3 information-entry">

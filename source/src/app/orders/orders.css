@@ -1,93 +1,118 @@
 .panel {
-	border: 1px solid #ddd;
-	background-color: #fcfcfc;
+    border: 1px solid #ddd;
+    background-color: #fcfcfc;
 }
+
 .panel .btn-group {
-	margin: 15px 0 30px !important
+    margin: 15px 0 30px !important
 }
+
 .panel .btn-group .btn {
-	transition: background-color .3s ease;
+    transition: background-color .3s ease;
 }
+
 .table-filter {
-	background-color: #fff;
-	border-bottom: 1px solid #eee;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
 }
+
 .table-filter tbody tr:hover {
-	cursor: pointer;
-	background-color: #eee;
+    cursor: pointer;
+    background-color: #eee;
 }
+
 .table-filter tbody tr td {
-	padding: 10px;
-	vertical-align: middle;
-	border-top-color: #eee;
+    padding: 10px;
+    vertical-align: middle;
+    border-top-color: #eee;
 }
+
 .table-filter tbody tr.selected td {
-	background-color: #eee;
+    background-color: #eee;
 }
+
 .table-filter tr td:first-child {
-	width: 38px;
+    width: 38px;
 }
+
 .table-filter tr td:nth-child(2) {
-	width: 35px;
+    width: 35px;
 }
+
 .table-filter .star {
-	color: #ccc;
-	text-align: center;
-	display: block;
+    color: #ccc;
+    text-align: center;
+    display: block;
 }
+
 .table-filter .star.star-checked {
-	color: #F0AD4E;
+    color: #F0AD4E;
 }
+
 .table-filter .star:hover {
-	color: #ccc;
+    color: #ccc;
 }
+
 .table-filter .star.star-checked:hover {
-	color: ##2BBCDE;
+    color: #2BBCDE;
 }
+
 .table-filter .media .title {
-	color: #2BBCDE;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: normal;
-	margin: 0;
+    color: #2BBCDE;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0;
 }
+
 .table-filter .media .title span {
-	font-size: .8em;
-	margin-right: 20px;
+    font-size: .8em;
+    margin-right: 20px;
 }
-.table-filter .media .title span.pagado {
-	color: #05444B;
+
+.table-filter .media .title span.Delivered {
+    color: #05444B;
 }
-.table-filter .media .title span.pendiente {
-	color: #f0ad4e;
+
+.table-filter .media .title span.Pending {
+    color: #f0ad4e;
 }
-.table-filter .media .title span.cancelado {
-	color: #716d6d;
+
+.table-filter .media .title span.Cancelled {
+    color: #716d6d;
 }
-.btn:hover, .btn:focus, .btn.focus{
-  color: #fff !important;
+
+.btn:hover,
+.btn:focus,
+.btn.focus {
+    color: #fff !important;
 }
-.btn-tramite {
+
+.btn-Pending {
     color: #fff;
     background-color: #037e8c;
     border-color: #037e8c;
 }
-.btn-entregado {
+
+.btn-Delivered {
     color: #fff;
     background-color: #05444B;
     border-color: #05444B;
 }
-.btn-pendiente {
+
+.btn-InProgress {
     color: #fff;
-    background-color: #05444B;
+    background-color: #8cbd2d;
     border-color: #05444B;
 }
-.btn-cancelado {
+
+.btn-Cancelled {
     color: #fff;
     background-color: #716d6d;
     border-color: #716d6d;
 }
-.badge-tramite  {
+
+.badge-Pending {
     display: inline-block;
     min-width: 10px;
     padding: 3px 7px;
@@ -102,7 +127,7 @@
     border-radius: 10px;
 }
 
-.badge-cancelado  {
+.badge-Cancelled {
     display: inline-block;
     min-width: 10px;
     padding: 3px 7px;
@@ -117,7 +142,7 @@
     border-radius: 10px;
 }
 
-.badge-entregado  {
+.badge-Delivered {
     display: inline-block;
     min-width: 10px;
     padding: 3px 7px;
