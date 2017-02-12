@@ -5,10 +5,10 @@
         .module('lappweb')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['MainService', 'CartService', 'FavoritesService', '$rootScope', 'toastr'];
+    MainController.$inject = ['MainService', 'CartService', 'FavoritesService', '$rootScope', 'toastr', 'AuthFactory'];
 
     /** @ngInject */
-    function MainController(MainService, CartService, FavoritesService, $rootScope, toastr) {
+    function MainController(MainService, CartService, FavoritesService, $rootScope, toastr, AuthFactory) {
         var vm = this;
 
         if (angular.isUndefined($rootScope.cart)) {
@@ -27,6 +27,7 @@
 
 
         if (localStorage.getItem("settings") === null) {
+            debugger;
             MainService.getSettings();
         }
 
@@ -34,7 +35,7 @@
             'padding-top': angular.element(document.querySelector('header')).outerHeight(true)
         });
 
-        MainService.obtainAccessToken().then(function(resp) {
+        AuthFactory.obtainAccessToken().then(function(resp) {
             vm.myPromise = MainService.catalogs().then(function(resp) {
                 var catalogsDict = {};
                 _.forEach(resp, function(value) {

@@ -27,15 +27,31 @@
 
         vm.login = function(user, pass) {
             debugger;
-            LoginService.Login("hola", "mundo")
-                .success(function(res) {
-                    debugger;
-                }).then(function(data) {
-                    debugger;
-                }, function(err) {
-                    debugger;
-                });
+            LoginService.Login(user, pass).then(function(data) {
+                toastr.success("Sesión Iniciada", "Aviso");
+                $state.go('orders');
+                debugger;
+            }, function(err) {
+                var desc = "";
+                if (err) {
+                    desc = err.Description;
+                } else if (err === undefined) {
+                    $state.go('login');
+                    //location.reload();
+                    desc = "Inténtalo nuevamente";
+                }
+                toastr.error(desc, "Aviso");
+                debugger;
+            });
         };
+
+        $('input').blur(function() {
+            var $this = $(this);
+            if ($this.val())
+                $this.addClass('used');
+            else
+                $this.removeClass('used');
+        });
     }
 
 })();

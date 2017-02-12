@@ -5,9 +5,9 @@
         .module('lappweb')
         .directive('lappNavbar', lappNavbar);
 
-    lappNavbar.$inject = ['MainService', '$rootScope', 'ProductService', '$state'];
+    lappNavbar.$inject = ['MainService', '$rootScope', 'ProductService', '$state', 'AuthFactory'];
     /** @ngInject */
-    function lappNavbar(MainService, $rootScope, ProductService, $state) {
+    function lappNavbar(MainService, $rootScope, ProductService, $state, AuthFactory) {
         var directive = {
             restrict: 'E',
             templateUrl: 'app/components/navbar/navbar.html',
@@ -23,7 +23,7 @@
         return directive;
 
         /** @ngInject */
-        function NavbarController(MainService, $rootScope, ProductService, $state) {
+        function NavbarController(MainService, $rootScope, ProductService, $state, AuthFactory) {
             var vm = this;
 
             vm.showCatgories = false;
@@ -32,7 +32,7 @@
             // $rootScope.$on('productAdded', function(event) {
             // });
 
-            MainService.obtainAccessToken().then(function(resp) {
+            AuthFactory.obtainAccessToken().then(function(resp) {
                 //Categorias menu
                 MainService.catalogs().then(function(data) {
                     vm.categories = data;

@@ -1,0 +1,46 @@
+<div class="login wide-center fixed-header-margin" style="padding-top: 151px;">
+    <div class="content-push">
+        <form class="loginForm" id="loginForm" ng-submit="login.login(client.username, client.password);">
+            <div class="group">
+                <input type="email" ng-model="client.username" ng-required="true"><span class="highlight"></span><span class="bar"></span>
+                <label>Email</label>
+            </div>
+            <div class="group">
+                <input type="password" ng-model="client.password" ng-required="true"><span class="highlight"></span><span class="bar"></span>
+                <label>Contraseña</label>
+            </div>
+            <button type="submit" class="button buttonBlue">Iniciar Sesión
+                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+            </button>
+        </form>
+    </div>
+</div>
+<!--<div class="register-container container" style="margin-top: 200px;">
+    <form id="accountForm" name="registerForm" class="form-horizontal" ng-submit="register.SaveClient(client);">
+        <div class="tab-pane active" id="basic-info" style="margin-top: 2em; padding-left: 6em;">
+            <div class="form-group required">
+                <label>
+                    Email
+                </label>
+                <div class="col-md-3">
+                    <input id="email-client" ng-model="client.email" name="email-client" type="email" placeholder="Correo Electrónico" class="form-control input-md" required="">
+                </div>
+            </div>
+            <div class="form-group required">
+                <label>
+                    Contraseña
+                </label>
+                <div class="col-md-3">
+                    <input id="client-password" ng-model="client.password" name="client-password" type="password" placeholder="Contraseña" class="form-control input-md" required="">
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 15px;">
+            <div class="col-xs-5 col-xs-offset-3 col-md-4 col-md-offset-4">
+                <button id="singlebutton" name="singlebutton" class="button style-10" type="submit"> <!-- ng-disabled="registerForm.$invalid" >
+                    Iniciar Sesión
+                </button>
+            </div>
+        </div>
+    </form>
+    </div>-->

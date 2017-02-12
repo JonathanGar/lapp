@@ -4,43 +4,23 @@
 
     angular
         .module('lappweb')
-        .factory('LoginService', ["RESOURCE_API_TOKEN", "$http", LoginService]);
+        .factory('LoginService', ["$q", "$http", "AuthFactory", LoginService]);
 
-    function LoginService(RESOURCE_API_TOKEN, $http) {
+    function LoginService($q, $http, AuthFactory) {
         return {
-            Login: function(username, password) {
-
-                    return $http({
-                        url: RESOURCE_API_TOKEN,
-                        method: 'POST',
-                        data: "userName=" + encodeURIComponent(username) +
-                            "&password=" + encodeURIComponent(password) +
-                            "&Scope=" + encodeURIComponent("website") +
-                            "&grant_type=" + encodeURIComponent("client_credentials") +
-                            "&client_secret=" + encodeURIComponent("123@abc") +
-                            "&client_id=" + encodeURIComponent("ef4151a8-4809-4fdc-94c3-623dc45367f7"),
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded"
-                        }
+            Login: function(_username, _password) {
+                var loginData = { serName: _username, password: _password, useRefreshTokens: true },
+                    deferred = $q.defer();
+                AuthFactory.login(loginData).then(function(data) {
+                        debugger;
+                        deferred.resolve(data);
+                    },
+                    function(err) {
+                        debugger;
+                        deferred.reject(err);
                     });
-                }
-                /*
-                    "userName=" + encodeURIComponent(username) +
-                    "&password=" + encodeURIComponent(password) +
-                    "&Scope=" + encodeURIComponent("website") +
-                    "&grant_type=" + encodeURIComponent("client_credentials") +
-                    "&client_secret=" + encodeURIComponent("123%40abc") +
-                    "&client_id=" + encodeURIComponent("ef4151a8-4809-4fdc-94c3-623dc45367f7"),
-                 
-                {
-                    "userName": username,
-                    "password": password,
-                    "Scope": "website",
-                    "grant_type": "client_credentials",
-                    "client_secret": "123@abc",
-                    "client_id": "ef4151a8-4809-4fdc-94c3-623dc45367f7"
-                }
-                */
+                return deferred.promise;
+            }
         }
     }
 

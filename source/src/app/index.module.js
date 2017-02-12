@@ -22,7 +22,6 @@
         function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $authProvider) {
             $urlRouterProvider
                 .otherwise('/login');
-
             $locationProvider.html5Mode(true);
 
             //CORS
@@ -48,9 +47,6 @@
     .factory('httpRequestInterceptor', ["$cookies", "$rootScope", "$q", "$injector", "$location", function($cookies, $rootScope, $q, $injector, $location) {
         return {
             request: function(config) {
-                //config.headers.Authorization = 'ZUMO-API-VERSION 2.0.0'; NO
-                //config.headers["ZUMO-API-VERSION"] = "2.0.0";
-                //return config;
                 config.headers = config.headers || {};
                 if ($rootScope.globals) {
                     if ($rootScope.globals.accessToken) {
@@ -60,51 +56,34 @@
                 // Return the config or wrap it in a promise if blank.
                 return config || $q.when(config);
             },
-            /*requestError: function(rejection) {
-                debugger;
-                return rejection;
-            },*/
-            responseError: function(response) {
+            responseError: function(rejection) {
                 //debugger;
                 // error - was it 401 or something else?
-                if (response.status === 401) {
+                if (rejection.status === 401) {
                     var deferred = $q.defer(); // defer until we can re-request a new token
-                    var accessToken = window.localStorage.getItem("accessToken");
-                    var refreshtoken = window.localStorage.getItem("refreshToken");
-                    // Get a new token... (cannot inject $http directly as will cause a circular ref)
-                    /*$injector.get("authenticationService").RefreshToken(refreshtoken).then(function(loginResponse) {
-                        if (loginResponse) {
-                            console.log(loginResponse);
-                            $rootScope.globals.accessToken = loginResponse.data.access_token; // we have a new acces token - set at $rootScope
-                            $rootScope.globals.refreshToken = loginResponse.data.refresh_token; // we have a new refresh token - set at $rootScope
-                            //Update the headers
-                            window.localStorage.setItem("accessToken", loginResponse.data.access_token);
-                            window.localStorage.setItem("refreshToken", loginResponse.data.refresh_token);
-                            window.localStorage.setItem("rememberMe", true);
-                            //Time Expires
-                            window.localStorage.setItem("time_expires_in", loginResponse.data.expires_in);
-                            //Time user logged in
-                            window.localStorage.setItem("time_logged_in", new Date().getTime());
+                    var authService = $injector.get('AuthFactory');
+                    //var accessToken = window.localStorage.getItem("accessToken");
+                    //var refreshtoken = window.localStorage.getItem("refreshToken");                    
+                    //var authData = localStorageService.get('authorizationData');
 
-                            // now let's retry the original request - transformRequest in .run() below will add the new OAuth token
-                            $injector.get("authenticationService").ResolveDeferred(response.config).then(function(defResp) {
-                                // we have a successful response - resolve it using deferred
-                                deferred.resolve(defResp);
-                            }, function(defResp) {
-                                deferred.reject(); // something went wrong
-                            });
-                        } else {
-                            deferred.reject(); // login.json didn't give us data
+                    try {
+                        var authData = $rootScope.globals.authorizationData;
+                    } catch (err) {
+
+                    }
+
+                    if (authData) {
+                        if (authData.useRefreshTokens) {
+                            $location.path('/refresh');
+                            return $q.reject(rejection);
                         }
-                    }, function(response) {
-                        deferred.reject(); // token retry failed, redirect so user can login again
-                        $location.path('/login');
-                        return;
-                    });*/
-                    deferred.resolve(response); //TODO:quitar
-                    return deferred.promise; // return the deferred promise
+                    }
+                    authService.logOut();
+                    $location.path('/login');
+                    //deferred.resolve(rejection); //TODO:quitar
+                    //return deferred.promise; // return the deferred promise
                 }
-                return $q.reject(response); // not a recoverable error
+                return $q.reject(rejection); // not a recoverable error
             }
         };
     }]);
