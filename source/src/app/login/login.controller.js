@@ -36,8 +36,8 @@
                 if (err) {
                     desc = err.Description;
                 } else if (err === undefined) {
-                    $state.go('login');
-                    //location.reload();
+                    //$state.go('login');
+                    location.reload();
                     desc = "Inténtalo nuevamente";
                 }
                 toastr.error(desc, "Aviso");

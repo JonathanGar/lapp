@@ -7,7 +7,8 @@
 
             var currentUser = {},
                 authServiceFactory = {},
-                clientId = "ef4151a8-4809-4fdc-94c3-623dc45367f7";
+                clientId = "ef4151a8-4809-4fdc-94c3-623dc45367f7",
+                _this = this;
 
 
             if ($cookies.get('token')) {
@@ -77,16 +78,13 @@
                     authentication.userName = loginData.userName;
                     authentication.useRefreshTokens = loginData.useRefreshTokens;
                     authentication.refreshToken = response.refresh_token;
-
                     //currentUser = User.get();
                     deferred.resolve(response);
-                    //return cb();
                 }).
                 error(function(err) {
                     debugger;
                     logout();
                     deferred.reject(err);
-                    //return cb(err);
                 });
 
                 return deferred.promise;
@@ -98,7 +96,6 @@
              * @param  {Function}
              */
             var logout = function() {
-                //$cookies.remove('token');
                 $rootScope.globals = {};
                 currentUser = {};
                 authentication.isAuth = false;
@@ -245,10 +242,9 @@
                     deferred.resolve(response);
 
                 }).error(function(err, status) {
-                    logOut();
+                    logout();
                     deferred.reject(err);
                 });
-
                 return deferred.promise;
             };
 
@@ -285,7 +281,7 @@
                             };
                             deferred.resolve(response);
                         }).error(function(err, status) {
-                            logOut();
+                            logout();
                             deferred.reject(err);
                         });
                     }
@@ -308,13 +304,15 @@
                     deferred.resolve(response);
 
                 }).error(function(err, status) {
-                    _logOut();
+                    _logout();
                     deferred.reject(err);
                 });
 
                 return deferred.promise;
                 */
             };
+
+            _this.logout
 
             authServiceFactory.authentication = authentication;
             authServiceFactory.externalAuthData = externalAuthData;

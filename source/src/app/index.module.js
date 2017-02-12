@@ -78,7 +78,7 @@
                             return $q.reject(rejection);
                         }
                     }
-                    authService.logOut();
+                    authService.logout();
                     $location.path('/login');
                     //deferred.resolve(rejection); //TODO:quitar
                     //return deferred.promise; // return the deferred promise

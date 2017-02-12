@@ -22,23 +22,36 @@
                     <div class="article-container style-1">
                         <div class="row">
                             <div class="col-md-6 information-entry">
-                                <h4>CLIENTE</h4>
-                                <p>Se presenta información detallada del cliente</p>
-                                <ul>
-                                    <li>Nombre: {{order.detail.client.name}}</li>
-                                    <li>E-mail: {{order.detail.client.email}}</li>
-                                    <li>Teléfono: {{order.detail.client.phoneNumber}}</li>
-                                    <li>Customer Personal Products - upload text for embroidery, monogramming</li>
-                                    <li>Create Store-specific attributes on the fly</li>
+                                <ul class="list-group">
+                                    <li class="list-group-item active green-header">
+                                        CLIENTE
+                                    </li>
+                                    <li class="list-group-item">{{order.detail.client.name}}</li>
                                 </ul>
                             </div>
                             <div class="col-md-6 information-entry">
-                                <h4>Domiciliario</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                                <ul>
-                                    <li>Nombre: {{order.detail.employee.name}}</li>
-                                    <li>E-mail: {{order.detail.employee.email}}</li>
-                                    <li>Teléfono: {{order.detail.employee.phoneNumber}}</li>
+                                <ul class="list-group">
+                                    <li class="list-group-item active green-header">
+                                        PEDIDO
+                                    </li>
+                                    <li class="list-group-item"><b>ID:</b> {{order.detail.id}}</li>
+                                    <li class="list-group-item"><b>Entrega:</b> {{order.detail.deliveredAt | date}}</li>
+                                    <li class="list-group-item"><b>Hora Aproximada:</b> {{order.detail.deliveredAt | date:'hh:mm a'}}</li>
+                                    <li class="list-group-item"><b>Subtotal:</b> {{(order.detail.total + order.detail.deliveryCost + order.detail.totalDiscounts) | currency:"$":0}}</li>
+                                    <li class="list-group-item"><b>Costo de envío:</b> {{order.detail.deliveryCost | currency:"$":0}}</li>
+                                    <li class="list-group-item"><b>Descuentos:</b> {{order.detail.totalDiscounts | currency:"$":0}}</li>
+                                    <li class="list-group-item"><b>Total:</b> {{order.detail.total}}</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 information-entry">
+                                <ul class="list-group">
+                                    <li class="list-group-item active green-header">
+                                        Dirección
+                                    </li>
+                                    <li class="list-group-item">{{order.detail.address.notes}}</li>
+                                    <li class="list-group-item">{{order.detail.address.mainAddress | address}}</li>
+                                    <li class="list-group-item">{{order.detail.address.type}}</li>
+                                    <li class="list-group-item">Teléfono {{order.detail.address.phoneNumber}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -48,44 +61,33 @@
                     <div class="article-container style-1">
                         <div class="row">
                             <div class="col-md-6 information-entry" ng-repeat="product in order.detail.products">
-                                <h4>{{product.product.name}} x {{product.product.quantity}} {{product.product.unitMeasure}}</h4>
-                                <p>Facturación</p>
-                                <ul>
-                                    <li>Precio: {{product.price.value | currency:"$":0 }}</li>
-                                    <li>Cantidad: {{product.quantity}}</li>
-                                    <li>Subtotal: {{product.subtotal | currency:"$":0 }}</li>
-                                    <li>Descuento: {{product.discounts | currency:"$":0 }}</li>
-                                    <li>Última actualización del pedido: {{product.updatedAt | date}}</li>
-                                </ul>
-                                <div ng-if="product.promotion">
-                                    <p>Info Promoción</p>
-                                    <ul>
-                                        <li>Valor: {{product.promotion.value}} {{product.promotion.type}}</li>
-                                        <li>Cupón: {{product.promotion.coupon}} </li>
-                                        <li>Válido hasta: {{product.promotion.endValidityDate | date}} </li>
-                                    </ul>
+                                <div class="list-group">
+                                    <div class="list-group-item">
+                                        <div class="thumbnail" style="position: absolute">
+                                            <img src="{{product.product.thumbnailUrl}}" alt="{{product.product.name}}" />
+                                        </div>
+                                        <div class="caption" style="position: relative;padding-left: 118px;">
+                                            <h4 class="list-group-item-heading">{{product.product.name}} x {{product.product.quantity}} {{product.product.unitMeasure}}</h4>
+                                            <div class="list-group-item-text">
+                                                <ul>
+                                                    <li>Cantidad: {{product.quantity}}</li>
+                                                    <li>Precio: {{product.price.value | currency:"$":0 }}</li>
+                                                    <li>Descuento: {{product.discounts | currency:"$":0 }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <br/><br/>
-                        <div class="row">
-                            <div class="col-md-6 information-entry">
-                                <h4>Actualizado en {{order.detail.updatedAt | date}}</h4>
-                                <ul>
-                                    <li>Costo de Entrega: {{order.detail.deliveryCost | currency:"$":0}} </li>
-                                    <li>Total Descuentos: {{order.detail.totalDiscounts | currency:"$":0}} </li>
-                                    <li>Total a pagar: {{order.detail.total | currency:"$":0}} </li>
-                                </ul>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
                 <div class="tabs-entry">
                     <div class="article-container style-1">
                         <div class="row">
                             <div class="col-md-6 information-entry">
-                                <h4>MENSAJES</h4>
+                                <h4>NOTIFICACIONES</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
                                 <ul>

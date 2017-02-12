@@ -3,7 +3,7 @@
 
         <div class="tab-pane active" id="basic-info" style="margin-top: 2em;">
             <div class="form-group required">
-                <label>
+                <label class="col-md-4 control-label" for="register.client.name">
                     Nombre Completo
                 </label>
                 <div class="col-md-5">
@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="form-group required">
-                <label>
+                <label class="col-md-4 control-label" for="register.client.phoneNumber">
                     Teléfono
                 </label>
                 <div class="col-md-5">
@@ -19,18 +19,18 @@
                 </div>
             </div>
             <div class="form-group required">
-                <label>
+                <label class="col-md-4 control-label" for="register.client.birthDate">
                     Fecha de Nacimiento
                 </label>
                 <div class="col-md-5">
                     <p class="input-group" ng-click="register.open($event)">
-                        <input id="fecha" name="fecha" type="date" class="form-control" ng-model="register.client.birthDate" is-open="register.opened" min-date="1900-01-01" max-date="'2099-12-31'" datepicker-options="register.dateOptions" date-disabled="disabled(date, mode)"
-                            ng-required="true" close-text="Close" />
+                        <input id="fecha" placeholder="1900-12-01" class="form-control date-md" name="fecha" type="date" ng-model="register.client.birthDate" is-open="register.opened" min-date="'1900-01-01'" max-date="'2099-12-31'" ng-required="true" close-text="Close" />
+                        <!-- datepicker-options="register.dateOptions" date-disabled="disabled(date, mode)" -->
                     </p>
                 </div>
             </div>
             <div class="form-group">
-                <label>
+                <label class="col-md-4 control-label" for="register.client.gender">
                     Género
                 </label>
                 <div class="col-md-2">
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="form-group required">
-                <label>
+                <label class="col-md-4 control-label" for="register.client.email">
                     Email
                 </label>
                 <div class="col-md-5">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="form-group required">
-                <label>
+                <label class="col-md-4 control-label" for="register.client.password">
                     Contraseña
                 </label>
                 <div class="col-md-5">
