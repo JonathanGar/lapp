@@ -26,9 +26,8 @@
         }
 
 
-        if (localStorage.getItem("settings") === null) {
-            debugger;
-            MainService.getSettings();
+        if (localStorage.getItem("settings") === "[]") {
+            MainService.getSettings().then(function(settings) {});
         }
 
         angular.element(document.querySelector('.fixed-header-margin')).css({

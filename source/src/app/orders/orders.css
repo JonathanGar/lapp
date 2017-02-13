@@ -1,6 +1,7 @@
 .green-header {
     background-color: rgb(38, 97, 43) !important;
     border-color: rgb(38, 97, 43) !important;
+    opacity: 0.8;
 }
 
 .panel {

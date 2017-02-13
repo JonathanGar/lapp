@@ -5,10 +5,10 @@
         .module('lappweb')
         .controller('ProductDetailController', ProductDetailController);
 
-    ProductDetailController.$inject = ['ProductService', 'CartService', '$rootScope', '$stateParams', 'toastr', 'FavoritesService'];
+    ProductDetailController.$inject = ['ProductService', 'CartService', '$rootScope', '$stateParams', 'toastr', 'FavoritesService', 'MainService'];
 
     /** @ngInject */
-    function ProductDetailController(ProductService, CartService, $rootScope, $stateParams, toastr, FavoritesService) {
+    function ProductDetailController(ProductService, CartService, $rootScope, $stateParams, toastr, FavoritesService, MainService) {
 
         /*angular.element(document.querySelector('.fixed-div')).css({
           'padding-top': angular.element(document.querySelector('header')).outerHeight(true)
@@ -17,9 +17,18 @@
         var vm = this;
         vm.quantity = 1;
         var settings = JSON.parse(localStorage.getItem('settings'));
-        vm.policies = _.find(settings, {
-            'key': 'Policies'
-        }).value;
+
+        if (settings.length === 0) {
+            MainService.getSettings().then(function(settings) {
+                vm.policies = _.find(settings, {
+                    'key': 'Policies'
+                }).value;
+            });
+        } else {
+            vm.policies = _.find(settings, {
+                'key': 'Policies'
+            }).value;
+        }
 
         vm.spinnerDown = function(product) {
 

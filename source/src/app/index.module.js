@@ -15,7 +15,7 @@
             'ui.bootstrap',
             'toastr',
             'ksSwiper',
-            'cgBusy'
+            'cgBusy',
         ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$authProvider',

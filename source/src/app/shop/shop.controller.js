@@ -5,10 +5,10 @@
         .module('lappweb')
         .controller('ShopCategoriesController', ShopCategoriesController);
 
-    ShopCategoriesController.$inject = ['FavoritesService', 'ShopService', 'CartService', '$rootScope', '$stateParams', 'PagerService', 'toastr'];
+    ShopCategoriesController.$inject = ['FavoritesService', 'ShopService', 'CartService', '$rootScope', '$stateParams', 'PagerService', 'toastr', 'MainService'];
 
     /** @ngInject */
-    function ShopCategoriesController(FavoritesService, ShopService, CartService, $rootScope, $stateParams, PagerService, toastr) {
+    function ShopCategoriesController(FavoritesService, ShopService, CartService, $rootScope, $stateParams, PagerService, toastr, MainService) {
         var vm = this;
 
         vm.pageSize = 12;
@@ -53,9 +53,18 @@
 
         vm.quantity = 1;
         var settings = JSON.parse(localStorage.getItem('settings'));
-        vm.policies = _.find(settings, {
-            'key': 'Policies'
-        }).value;
+        if (settings.length === 0) {
+            MainService.getSettings().then(function(settings) {
+                debugger;
+                vm.policies = _.find(settings, {
+                    'key': 'Policies'
+                }).value;
+            });
+        } else {
+            vm.policies = _.find(settings, {
+                'key': 'Policies'
+            }).value;
+        }
 
         vm.spinnerDown = function() {
             if (vm.quantity > 1) {

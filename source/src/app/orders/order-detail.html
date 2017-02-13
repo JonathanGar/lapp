@@ -11,7 +11,7 @@
                     <div class="list">
                         <a class="tab-switcher active">RESUMEN</a>
                         <a class="tab-switcher">PRODUCTOS</a>
-                        <a class="tab-switcher">MENSAJES (25)</a>
+                        <a class="tab-switcher">NOTIFICACIONES</a>
                         <div class="clear"></div>
                     </div>
                     <div class="clear"></div>
@@ -87,28 +87,16 @@
                     <div class="article-container style-1">
                         <div class="row">
                             <div class="col-md-6 information-entry">
-                                <h4>NOTIFICACIONES</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                                <h4>Estado </h4>
+                                <span class="badge">{{order.detail.status | status}}</span>                              
+                                <p>
+                                    {{order.detail.status | status_desc}}
+                                </p>
                                 <ul>
-                                    <li>Any Product types that You want - Simple, Configurable</li>
-                                    <li>Downloadable/Digital Products, Virtual Products</li>
-                                    <li>Inventory Management with Backordered items</li>
-                                    <li>Customer Personal Products - upload text for embroidery, monogramming</li>
-                                    <li>Create Store-specific attributes on the fly</li>
+                                    <li><b>ID:</b> {{order.detail.id | date}}</li>
+                                    <li><b>Procesado:</b> {{order.detail.attendanceStartedAt | date}}</li>
                                 </ul>
-                            </div>
-                            <div class="col-md-6 information-entry">
-                                <h4>SHIPPING</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                                <ul>
-                                    <li>Any Product types that You want - Simple, Configurable</li>
-                                    <li>Downloadable/Digital Products, Virtual Products</li>
-                                    <li>Inventory Management with Backordered items</li>
-                                    <li>Customer Personal Products - upload text for embroidery, monogramming</li>
-                                    <li>Create Store-specific attributes on the fly</li>
-                                </ul>
-                            </div>
+                            </div>                           
                         </div>
                     </div>
                 </div>

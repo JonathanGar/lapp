@@ -5,6 +5,7 @@
     angular
         .module('lappweb')
         .filter('status', status)
+        .filter('status_desc', status_desc)
         .filter('address', address);
 
     //OrdersController.$inject = ['MainService', 'OrdersService', 'toastr', '$rootScope', '$stateParams'];
@@ -28,7 +29,29 @@
                     return ""
                     break;
             }
-        }
+        };
+    };
+
+    function status_desc(){
+        return function(status){
+            switch (status) {
+                case "InProgress":
+                    return "Su pedido está siendo procesado en este momento..."
+                    break;
+                case "Delivered":
+                    return "Su pedido ya ha sido entregado y cancelado."
+                    break;
+                case "Pending":
+                    return "Su pedido está pendiente por entregar."
+                    break;
+                case "Cancelled":
+                    return "Su pedido se ha cancelado."
+                    break;
+                default:
+                    return ""
+                    break;
+            }
+        };
     };
 
     function address() {
@@ -39,7 +62,7 @@
             } catch (e) {
                 return str;
             }
-        }
+        };
     };
 
 

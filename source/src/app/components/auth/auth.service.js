@@ -44,15 +44,7 @@
              * @return {Promise}
              */
             var login = function(loginData) {
-                //var cb = callback || angular.noop;
                 var deferred = $q.defer();
-                /*var _data = "&Scope=website&grant_type=password" +
-                    "&username=" + encodeURIComponent(loginData.userName) +
-                    "&password=" + encodeURIComponent(loginData.password);
-
-                if (loginData.useRefreshTokens) {
-                    _data = _data + "&client_id=" + clientId;
-                }*/
                 debugger;
                 $http.get(RESOURCE_API + "api/Clients/existing/" + encodeURIComponent(loginData.userName) + "/" + encodeURIComponent(loginData.password)).
                 success(function(response) {
