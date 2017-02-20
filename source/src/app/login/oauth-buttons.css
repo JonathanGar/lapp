@@ -138,7 +138,7 @@ input.used~label {
     transform: scale(.75);
     left: -2px;
     /* font-size: 14px; */
-    color: #4a89dc;
+    color: rgb( 239, 125, 56);
 }
 
 
@@ -228,7 +228,7 @@ input:focus~.highlight {
     letter-spacing: 1px;
     background: transparent;
     border: 0;
-    border-bottom: 2px solid #3160B6;
+    border-bottom: 2px solid rgb(38, 97, 48);
     cursor: pointer;
     transition: all 0.15s ease;
 }
@@ -240,13 +240,13 @@ input:focus~.highlight {
 
 /* Button modifiers */
 
-.buttonBlue {
-    background: #4a89dc;
+.buttonGreen {
+    background: rgb(38, 97, 43);
     text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
 }
 
-.buttonBlue:hover {
-    background: #357bd8;
+.buttonGreen:hover {
+    background: rgba(38, 97, 43, .5);
 }
 
 

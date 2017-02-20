@@ -20,7 +20,7 @@
                     deferred.resolve(orders);
                 })
                 .error(function(data, status, headers, config) {
-                    console.error('Error fetching feed:', data);
+                    $log.error('Error fetching feed:', data);
                 });
             return deferred.promise;
         };
@@ -32,7 +32,7 @@
                     deferred.resolve(order);
                 })
                 .error(function(data, status, headers, config) {
-                    console.error('Error fetching feed:', data);
+                    $log.error('Error fetching feed:', data);
                 });
             return deferred.promise;
         };

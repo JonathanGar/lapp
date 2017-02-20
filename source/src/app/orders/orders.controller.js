@@ -6,9 +6,9 @@
         .module('lappweb')
         .controller('OrdersController', OrdersController);
 
-    OrdersController.$inject = ['MainService', 'OrdersService', 'toastr', '$rootScope', '$stateParams'];
+    OrdersController.$inject = ['MainService', 'OrdersService', 'toastr', '$rootScope', '$stateParams', '$log'];
 
-    function OrdersController(MainService, OrdersService, toastr, $rootScope, $stateParams) {
+    function OrdersController(MainService, OrdersService, toastr, $rootScope, $stateParams, $log) {
         var vm = this;
         /*var settings = JSON.parse(localStorage.getItem('settings'));
         vm.clientId = _.find(settings, {
@@ -23,7 +23,7 @@
                     vm.detail = order;
                 }
             }).catch(function(err) {
-                console.error('Error fetching feed:', err);
+                $log.error('Error fetching feed:', err);
             });
 
         } else if (vm.clientId) {
@@ -32,7 +32,7 @@
                     vm.orders = _.filter(orders, { "clientId": vm.clientId });
                 }
             }).catch(function(err) {
-                console.error('Error fetching feed:', err);
+                $log.error('Error fetching feed:', err);
             });
         }
 

@@ -5,37 +5,45 @@
         .module('lappweb')
         .controller('RegisterController', RegisterController);
 
-    RegisterController.$inject = ['$rootScope', '$stateParams', 'RegisterService', 'toastr'];
+    RegisterController.$inject = ['$rootScope', '$stateParams', 'RegisterService', 'toastr', '$state', '$log', '$cookies'];
 
     /** @ngInject */
-    function RegisterController($rootScope, $stateParams, RegisterService, toastr) {
+    function RegisterController($rootScope, $stateParams, RegisterService, toastr, $state, $log, $cookies) {
         var vm = this;
 
         vm.format = 'MM/dd/yyyy';
         vm.client = {
             gender: 0
-        }
+        };
+
+        getProfile();
 
         vm.SaveClient = function(client) {
             var itemSave = {
-                "gender": (client.gender == 1) ? "Female" : "Male",
+                "gender": client.gender,
                 "name": client.name,
                 "birthDate": client.birthDate,
                 "email": client.email,
                 "password": client.password,
-                "phoneNumber": client.phoneNumber
+                "phoneNumber": client.phoneNumber,
+                "birthDate@odata.type": "Edm.DateTime",
+                "id@odata.type": "Edm.Guid",
             };
-            debugger;
+            if (!(typeof itemSave.birthDate == 'object')) {
+                itemSave.birthDate = new Date(itemSave.birthDate);
+            }
+            itemSave.birthDate = itemSave.birthDate.toISOString();
             RegisterService.post(itemSave).then(function(data) {
-                debugger;
-                console.log(data);
+                toastr.success('Usuario creado exitosamente', 'Información');
                 vm.client = {};
+                data.logged = true;
+                $cookies.putObject("client", data);
+                $state.go('account');
             }, function(err) {
-                toastr.error('Ha ocurrido un error interno', 'Información');
-                console.error("err", err);
+                //toastr.error('Ha ocurrido un error interno', 'Información');
+                $log.error("err", err);
             });
         };
-
 
         //DatePicker
         vm.today = function() {
@@ -50,6 +58,17 @@
             // $event.preventDefault();
             // $event.stopPropagation();
             vm.opened = true;
+        };
+
+        function getProfile() {
+            var fb = $cookies.getObject("fb");
+            debugger;
+            if (fb && fb.id) {
+                vm.fb = true,
+                    vm.client.name = fb.name,
+                    vm.client.email = fb.email,
+                    vm.client.password = fb.id;
+            }
         };
     }
 })();

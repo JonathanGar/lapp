@@ -1,9 +1,9 @@
-(function () {
+(function() {
 
     angular
         .module('lappweb')
         .service('CartService', ['RESOURCE_API', '$http', '$q', '$filter', '$rootScope', 'toastr',
-            function (RESOURCE_API, $http, $q, $filter, $rootScope, toastr) {
+            function(RESOURCE_API, $http, $q, $filter, $rootScope, toastr) {
 
                 var service = {
                     add: add,
@@ -15,8 +15,14 @@
                 return service;
 
                 function get() {
-                    return $rootScope.cart.products
-                }
+                    var deferred = $q.defer();
+                    if ($rootScope.cart && $rootScope.cart.products) {
+                        deferred.resolve($rootScope.cart.products);
+                    } else {
+                        deferred.reject(null);
+                    }
+                    return deferred.promise;
+                };
 
                 function add(product, quantity) {
                     product.quantityToAdd = quantity;
@@ -39,7 +45,7 @@
                     }
                     calculateSubTotal();
                     $rootScope.$emit('productAdded');
-                }
+                };
 
                 function remove(id) {
                     _.remove($rootScope.cart.products, {
@@ -47,11 +53,11 @@
                     });
 
                     calculateSubTotal()
-                }
+                };
 
                 function calculateSubTotal() {
                     var priceToAdd = 0;
-                    _.forEach($rootScope.cart.products, function (value) {
+                    _.forEach($rootScope.cart.products, function(value) {
                         priceToAdd += (value.value * value.quantityToAdd);
 
                     });
@@ -63,8 +69,7 @@
 
                     if (quantity < product.quantity) {
                         quantity++;
-                    }
-                    else {
+                    } else {
                         toastr.info('No se pueden añadir más unidades de este producto', 'Información');
                     }
 
@@ -95,7 +100,6 @@
                     }
                     return quantity
                 };
-
-
-            }]);
+            }
+        ]);
 })();

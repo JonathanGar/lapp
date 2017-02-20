@@ -2,7 +2,7 @@
 
     angular
         .module('lappweb')
-        .service('ShopService', ['RESOURCE_API', 'MED_CODE', '$http', '$q', '$filter', function(RESOURCE_API, MED_CODE, $http, $q, $filter) {
+        .service('ShopService', ['RESOURCE_API', 'MED_CODE', '$http', '$q', '$filter', '$log', function(RESOURCE_API, MED_CODE, $http, $q, $filter, $log) {
 
             //$http.defaults.useXDomain = true;
             //delete $http.defaults.headers.common['X-Requested-With'];
@@ -21,7 +21,7 @@
                     })
                     .error(function(data, status, headers, config) {
                         // data is always undefined here when there is an error
-                        console.error('Error fetching feed:', data);
+                        $log.error('Error fetching feed:', data);
                     });
                 return deferred.promise;
             };
@@ -34,7 +34,7 @@
                     })
                     .error(function(data, status, headers, config) {
                         // data is always undefined here when there is an error
-                        console.error('Error fetching feed:', data);
+                        $log.error('Error fetching feed:', data);
                     });
                 return deferred.promise;
             };

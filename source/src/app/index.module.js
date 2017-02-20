@@ -10,12 +10,12 @@
             'ngMessages',
             'ngAria',
             'ngResource',
+            'mwl.confirm',
             'ui.router',
             'satellizer',
             'ui.bootstrap',
             'toastr',
-            'ksSwiper',
-            'cgBusy',
+            'ksSwiper'
         ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$authProvider',
@@ -48,40 +48,47 @@
         return {
             request: function(config) {
                 config.headers = config.headers || {};
-                if ($rootScope.globals) {
-                    if ($rootScope.globals.accessToken) {
-                        config.headers.Authorization = 'Bearer ' + $rootScope.globals.accessToken;
-                    }
+                var authorizationData = $cookies.getObject("authorizationData");
+                if (authorizationData && authorizationData.token) {
+                    config.headers.Authorization = 'Bearer ' + authorizationData.token;
                 }
+
                 // Return the config or wrap it in a promise if blank.
                 return config || $q.when(config);
             },
             responseError: function(rejection) {
                 //debugger;
                 // error - was it 401 or something else?
+
+                var deferred = $q.defer(); // defer until we can re-request a new token 
                 if (rejection.status === 401) {
-                    var deferred = $q.defer(); // defer until we can re-request a new token
-                    var authService = $injector.get('AuthFactory');
-                    //var accessToken = window.localStorage.getItem("accessToken");
-                    //var refreshtoken = window.localStorage.getItem("refreshToken");                    
+                    $location.path('/');
                     //var authData = localStorageService.get('authorizationData');
+                    /*var authService = $injector.get('AuthFactory');
 
                     try {
-                        var authData = $rootScope.globals.authorizationData;
-                    } catch (err) {
+                        authService.obtainAccessToken().then(function(data) {
+                            debugger;
+                            $cookies.getObject("authorizationData").token = data.access_token;
+                            rejection.config.headers.Authorization = 'Bearer ' + data.access_token;
+                            return $q.reject(rejection);
+                        }, function(err) {
+                            $location.path('/');
+                        });
 
+                    } catch (err) {
+                        $location.path('/');
                     }
 
+                    return $q.reject(rejection);
                     if (authData) {
                         if (authData.useRefreshTokens) {
-                            $location.path('/refresh');
+                            $location.path('/');
                             return $q.reject(rejection);
                         }
-                    }
-                    authService.logout();
-                    $location.path('/login');
-                    //deferred.resolve(rejection); //TODO:quitar
-                    //return deferred.promise; // return the deferred promise
+                    }*/
+                    //authService.logout();
+                    //$location.path('/login');
                 }
                 return $q.reject(rejection); // not a recoverable error
             }

@@ -1,6 +1,12 @@
 <div class="register-container container" style="margin-top: 200px;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 style="font-family: cursive; text-align: center; font-size: 2em; color: #ef7e39;">
+                Registro
+            </h3>
+        </div>
+    </div>
     <form id="accountForm" name="registerForm" class="form-horizontal" ng-submit="register.SaveClient(register.client, register.adresses);">
-
         <div class="tab-pane active" id="basic-info" style="margin-top: 2em;">
             <div class="form-group required">
                 <label class="col-md-4 control-label" for="register.client.name">
@@ -48,7 +54,7 @@
                     <input id="email-client" ng-model="register.client.email" name="email-client" type="email" placeholder="Correo Electrónico" class="form-control input-md" required="">
                 </div>
             </div>
-            <div class="form-group required">
+            <div class="form-group required" ng-hide="register.fb == true">
                 <label class="col-md-4 control-label" for="register.client.password">
                     Contraseña
                 </label>

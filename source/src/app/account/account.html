@@ -1,0 +1,85 @@
+<div class="account-container container" style="margin-top: 200px;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 style="font-family: cursive; text-align: center; font-size: 2em; color: #ef7e39;">
+                INFORMACIÓN DE DOMICILIO
+            </h3>
+        </div>
+    </div>
+    <form id="accountForm" name="accountForm" class="form-horizontal" ng-submit="account.SaveAddress(account.address);">
+        <div class="tab-pane active" id="basic-info" style="margin-top: 2em;">
+            <div class="form-group required">
+                <label class="col-md-4 control-label" for="account.address.phoneNumber">
+                    Nombre de la Dirección
+                </label>
+                <div class="col-md-5">
+                    <input ng-model="account.address.notes" name="address-notes" type="text"  class="form-control input-md" ng-required="true">
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-md-4 control-label" for="account.address.dir_0">
+                    Dirección
+                </label>
+                <div class="col-md-2">
+                    <select class="form-control input-md" name="address-dir_0" ng-model="account.address.dir_0" ng-required="true">
+                        <option value="Calle">Calle</option>
+                        <option value="Avenida" selected>Avenida</option>
+                        <option value="Carrera">Carrera </option>
+                        <option value="Circular">Circular</option>
+                        <option value="Transversal">Transversal</option>
+                        <option value="Circunvalar">Circunvalar</option>
+                        <option value="Via">Vía</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input ng-model="account.address.dir_1" name="address-dir_1" type="text" class="form-control input-md" ng-required="true" style="text-transform:uppercase">
+                </div>
+            </div>
+            <div class="form-group required">      
+                <label class="col-md-4 control-label" for="account.address.dir_2">
+                    #
+                </label>
+                <div class="col-md-2">
+                    <input ng-model="account.address.dir_2" name="address-dir_2" type="text" class="form-control input-md" ng-required="true" style="text-transform:uppercase">
+                </div>  
+                <div class="col-md-1" style="width: 0;">
+                    _
+                </div>           
+                <div class="col-md-2">
+                    <input ng-model="account.address.dir_3" name="address-dir_3" type="text" class="form-control input-md" ng-required="true" style="text-transform:uppercase">
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-md-4 control-label" for="account.address.type">
+                    Indicaciones
+                </label>
+                <div class="col-md-5">
+                    <input ng-model="account.address.type" placeholder="Edificio, Unidad, Torre..." name="address-type" type="text"  class="form-control input-md" ng-required="true">
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-md-4 control-label" for="account.address.phoneNumber">
+                    Teléfono
+                </label>
+                <div class="col-md-5">
+                    <input ng-model="account.address.phoneNumber" name="address-phoneNumber" type="text"  class="form-control input-md" ng-required="true">
+                </div>
+            </div>
+            <div class="form-group required">
+                <label class="col-md-4 control-label" for="account.address.contactName">
+                    Nombre del Contacto
+                </label>
+                <div class="col-md-5">
+                    <input ng-model="account.address.contactName" name="address-contactName" type="text" class="form-control input-md" required="">
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 15px;">
+            <div class="col-xs-5 col-xs-offset-3 col-md-4 col-md-offset-4">
+                <button id="singlebutton" name="singlebutton" class="button style-10" type="submit"> 
+                  Añadir Dirección
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

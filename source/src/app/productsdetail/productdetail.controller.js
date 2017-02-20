@@ -72,9 +72,7 @@
                         vm.product = _.find(data, {
                             'id': $stateParams.id
                         });
-                    }).catch(function(err) {
-                        console.log(err);
-                    });
+                    }).catch(function(err) {});
                 }
             });
         }

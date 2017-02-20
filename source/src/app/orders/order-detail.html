@@ -35,7 +35,7 @@
                                         PEDIDO
                                     </li>
                                     <li class="list-group-item"><b>ID:</b> {{order.detail.id}}</li>
-                                    <li class="list-group-item"><b>Entrega:</b> {{order.detail.deliveredAt | date}}</li>
+                                    <li class="list-group-item"><b>Entrega:</b> {{order.detail.deliveredAt | date:'yyyy-MM-dd'}}</li>
                                     <li class="list-group-item"><b>Hora Aproximada:</b> {{order.detail.deliveredAt | date:'hh:mm a'}}</li>
                                     <li class="list-group-item"><b>Subtotal:</b> {{(order.detail.total + order.detail.deliveryCost + order.detail.totalDiscounts) | currency:"$":0}}</li>
                                     <li class="list-group-item"><b>Costo de envío:</b> {{order.detail.deliveryCost | currency:"$":0}}</li>
@@ -88,7 +88,7 @@
                         <div class="row">
                             <div class="col-md-6 information-entry">
                                 <h4>Estado </h4>
-                                <span class="badge">{{order.detail.status | status}}</span>                              
+                                <span class="badge">{{order.detail.status | status}}</span>
                                 <p>
                                     {{order.detail.status | status_desc}}
                                 </p>
@@ -96,7 +96,7 @@
                                     <li><b>ID:</b> {{order.detail.id | date}}</li>
                                     <li><b>Procesado:</b> {{order.detail.attendanceStartedAt | date}}</li>
                                 </ul>
-                            </div>                           
+                            </div>
                         </div>
                     </div>
                 </div>

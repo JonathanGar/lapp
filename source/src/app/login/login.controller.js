@@ -5,20 +5,34 @@
         .module('lappweb')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['MainService', '$rootScope', '$stateParams', '$auth', '$state', 'toastr', 'LoginService'];
+    LoginController.$inject = ['MainService', '$rootScope', '$stateParams', '$auth', '$state', 'toastr', 'LoginService', '$cookies', '$location'];
 
     /** @ngInject */
-    function LoginController(MainService, $rootScope, $stateParams, $auth, $state, toastr, LoginService) {
+    function LoginController(MainService, $rootScope, $stateParams, $auth, $state, toastr, LoginService, $cookies, $location) {
         var vm = this;
 
         vm.authenticate = function(provider) {
             $auth.authenticate(provider).then(function(response) {
-                    debugger;
                     MainService.getFacebookProfile(response.access_token).then(function(data) {
-                        debugger;
+                        LoginService.Login(data.email, pass).then(function(user) {
+                            toastr.success(user.name, "Bienvenido");
+                            window.logged = true;
+                            $state.go('orders');
+                        }, function(err) {
+                            var desc = "";
+                            if (err) {
+                                desc = err.Description;
+                            } else if (err === undefined) {
+                                desc = "Error interno";
+                            }
+                            toastr.error(desc, "Error");
+                        });
+
+                        toastr.success(data.name, "Bienvenido");
+                        $cookies.putObject("fb", data);
+                        $state.go('register');
                     });
-                    toastr.success("Sesión Iniciada", "Aviso");
-                    $state.go('home');
+
                 })
                 .catch(function(response) {
                     toastr.error("Error iniciando sesión", "Error");
@@ -26,22 +40,18 @@
         };
 
         vm.login = function(user, pass) {
-            debugger;
-            LoginService.Login(user, pass).then(function(data) {
-                toastr.success("Sesión Iniciada", "Aviso");
+            LoginService.Login(user, pass).then(function(user) {
+                toastr.success(user.name, "Bienvenido");
+                window.logged = true;
                 $state.go('orders');
-                debugger;
             }, function(err) {
                 var desc = "";
                 if (err) {
                     desc = err.Description;
                 } else if (err === undefined) {
-                    //$state.go('login');
-                    location.reload();
-                    desc = "Inténtalo nuevamente";
+                    desc = "Error interno";
                 }
-                toastr.error(desc, "Aviso");
-                debugger;
+                toastr.error(desc, "Error");
             });
         };
 

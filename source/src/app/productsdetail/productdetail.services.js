@@ -2,7 +2,7 @@
 
     angular
         .module('lappweb')
-        .service('ProductService', ['RESOURCE_API', 'RESOURCE_API_TEMP', 'MED_CODE', '$http', '$q', '$filter', function(RESOURCE_API, RESOURCE_API_TEMP, MED_CODE, $http, $q, $filter) {
+        .service('ProductService', ['RESOURCE_API', 'RESOURCE_API_TEMP', 'MED_CODE', '$http', '$q', '$filter', '$log', function(RESOURCE_API, RESOURCE_API_TEMP, MED_CODE, $http, $q, $filter, $log) {
 
             var service = {
                 get: get,
@@ -22,7 +22,7 @@
                     })
                     .error(function(data, status, headers, config) {
                         // data is always undefined here when there is an error
-                        console.error('Error fetching feed:', data);
+                        $log.error('Error fetching feed:', data);
                     });
                 return deferred.promise;
             }
@@ -64,7 +64,7 @@
                     })
                     .error(function(data, status, headers, config) {
                         // data is always undefined here when there is an error
-                        console.error('Error fetching feed:', data);
+                        $log.error('Error fetching feed:', data);
                     });
                 return deferred.promise;
             }

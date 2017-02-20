@@ -5,9 +5,9 @@
         .module('lappweb')
         .directive('lappNavbar', lappNavbar);
 
-    lappNavbar.$inject = ['MainService', '$rootScope', 'ProductService', '$state', 'AuthFactory'];
+    lappNavbar.$inject = ['MainService', '$rootScope', 'ProductService', '$state', 'AuthFactory', '$cookies', '$log'];
     /** @ngInject */
-    function lappNavbar(MainService, $rootScope, ProductService, $state, AuthFactory) {
+    function lappNavbar(MainService, $rootScope, ProductService, $state, AuthFactory, $cookies, $log) {
         var directive = {
             restrict: 'E',
             templateUrl: 'app/components/navbar/navbar.html',
@@ -23,39 +23,45 @@
         return directive;
 
         /** @ngInject */
-        function NavbarController(MainService, $rootScope, ProductService, $state, AuthFactory) {
+        function NavbarController(MainService, $rootScope, ProductService, $state, AuthFactory, $cookies, $log) {
             var vm = this;
 
             vm.showCatgories = false;
             vm.productSelected = "";
-            // vm.cartPrice = 0;
-            // $rootScope.$on('productAdded', function(event) {
-            // });
+            vm.logout = logout;
+            vm.window = window;
 
             AuthFactory.obtainAccessToken().then(function(resp) {
                 //Categorias menu
                 MainService.catalogs().then(function(data) {
                     vm.categories = data;
                 }).catch(function(err) {
-                    console.log(err);
+                    $log.log(err);
                 });
 
                 ProductService.get().then(function(data) {
                     vm.products = data;
                 }).catch(function(err) {
-                    console.log(err);
+                    $log.log(err);
                 });
 
                 vm.onSelect = function($item, $model, $label) {
                     $state.go('products', { id: $item.id });
                 };
             }).catch(function(err) {
-                console.log(err);
+                $log.error("obtainAccessToken", err);
             });
 
 
             var winW, winH, winScr, _isresponsive, _ismobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i);
 
+            function logout() {
+                AuthFactory.logout(); //.then(function(data){
+                $log.log("Sesión cerrada");
+                //$state.go("login");
+                window.location.reload();
+                //});
+            }
             /*========================*/
             /* 02 - page calculations */
             /*========================*/

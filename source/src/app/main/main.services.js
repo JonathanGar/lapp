@@ -2,8 +2,8 @@
 
     angular
         .module('lappweb')
-        .service('MainService', ['GRAPH_API_URL', 'RESOURCE_API', 'RESOURCE_API_TOKEN', 'MED_CODE', '$http', '$q', '$filter', '$rootScope',
-            function(GRAPH_API_URL, RESOURCE_API, RESOURCE_API_TOKEN, MED_CODE, $http, $q, $filter, $rootScope) {
+        .service('MainService', ['GRAPH_API_URL', 'RESOURCE_API', 'RESOURCE_API_TOKEN', 'MED_CODE', '$http', '$q', '$filter', '$rootScope', '$log',
+            function(GRAPH_API_URL, RESOURCE_API, RESOURCE_API_TOKEN, MED_CODE, $http, $q, $filter, $rootScope, $log) {
 
                 var service = {
                     get: get,
@@ -28,7 +28,7 @@
                         })
                         .error(function(data, status, headers, config) {
                             // data is always undefined here when there is an error
-                            console.error('Error fetching feed:', data);
+                            $log.error('Error fetching feed:', data);
                         });
                     return deferred.promise;
                 };
@@ -45,7 +45,7 @@
                         })
                         .error(function(data, status, headers, config) {
                             // data is always undefined here when there is an error
-                            console.error('Error fetching feed:', data);
+                            $log.error('Error fetching feed:', data);
                         });
                     return deferred.promise;
                 };
@@ -59,7 +59,7 @@
                         })
                         .error(function(data, status, headers, config) {
                             // data is always undefined here when there is an error
-                            console.error('Error fetching feed:', data);
+                            $log.error('Error fetching feed:', data);
                         });
                     return deferred.promise;
                 };
@@ -169,13 +169,12 @@
                     var deferred = $q.defer();
                     $http.get(GRAPH_API_URL + '&access_token=' + authToken)
                         .success(function(data) {
-                            debugger;
                             deferred.resolve(data);
                         })
                         .error(function(data, status, headers, config) {
                             // data is always undefined here when there is an error
-                            debugger;
-                            console.error('Error fetching feed:', data);
+                            deferred.reject(null);
+                            $log.error('Error fetching feed:', data);
                         });
                     return deferred.promise;
                 };

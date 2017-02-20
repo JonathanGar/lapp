@@ -9,14 +9,12 @@
     function LoginService($q, $http, AuthFactory) {
         return {
             Login: function(_username, _password) {
-                var loginData = { serName: _username, password: _password, useRefreshTokens: true },
+                var loginData = { userName: _username, password: _password, useRefreshTokens: true },
                     deferred = $q.defer();
-                AuthFactory.login(loginData).then(function(data) {
-                        debugger;
+                AuthFactory.login(loginData).then(function(data) {                        
                         deferred.resolve(data);
                     },
-                    function(err) {
-                        debugger;
+                    function(err) {                        
                         deferred.reject(err);
                     });
                 return deferred.promise;

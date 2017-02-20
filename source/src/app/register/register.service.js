@@ -2,7 +2,7 @@
 
     angular
         .module('lappweb')
-        .service('RegisterService', ['RESOURCE_API', 'RESOURCE_API_TEMP', '$http', '$q', '$filter', function(RESOURCE_API, RESOURCE_API_TEMP, $http, $q, $filter) {
+        .service('RegisterService', ['RESOURCE_API', 'RESOURCE_API_TEMP', '$http', '$q', '$filter', 'toastr', function(RESOURCE_API, RESOURCE_API_TEMP, $http, $q, $filter, toastr) {
 
             return service = {
                 post: post
@@ -10,30 +10,36 @@
 
             function post(itemSave) {
                 var deferred = $q.defer();
-                debugger;
                 $http
                     .get(RESOURCE_API + '/api/Clients/' + encodeURIComponent(itemSave.email))
                     .success(function(evt1) {
-                        debugger;
+                        toastr.error('El email ingresado ya se encuentra registrado', 'Error');
                         deferred.reject(evt1);
                     })
                     .error(function(data, status) {
-                        debugger;
-                        //console.error('Error ', data);
-                        //console.info('Status', status);
                         if (data.Code == 102) {
+                            itemSave.id = guid();
                             $http.post(RESOURCE_API + 'api/Clients', itemSave)
                                 .success(function(evt2) {
-                                    debugger;
                                     deferred.resolve(evt2);
                                 })
                                 .error(function(errData, errStatus) {
-                                    debugger;
+                                    toastr.error('Ha ocurrido un error interno', 'Información');
                                     deferred.reject(errData);
                                 });
                         }
                     });
                 return deferred.promise;
-            }
+            };
+
+            function guid() {
+                function s4() {
+                    return Math.floor((1 + Math.random()) * 0x10000)
+                        .toString(16)
+                        .substring(1);
+                }
+                return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                    s4() + '-' + s4() + s4() + s4();
+            };
         }]);
 })();

@@ -595,6 +595,14 @@ body {
 
 /*buttons*/
 
+.cta-drop-down{
+    margin-top: 13px;
+    text-decoration: underline;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+}
+
 .button {
     font-weight: 700;
     font-size: 12px;
@@ -720,15 +728,15 @@ body {
     text-transform: uppercase;
     font-weight: 700;
     color: #fff;
-    border: 2px #037E8C solid;
-    background: #037E8C;
+    border: 2px rgb(38, 97, 43) solid;
+    background: rgb(38, 97, 43);
     letter-spacing: 2px;
 }
 
 .button.style-10:hover,
 .button.style-12:hover {
     background: #fff;
-    color: #037E8C;
+    color: rgb(239, 125, 56);
 }
 
 .button.style-11 {

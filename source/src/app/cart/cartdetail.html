@@ -39,9 +39,11 @@
 						<div class="subtitle">ORDERS WILL BE PROCESSED IN USD</div>-->
                     </div>
                     <div class="additional-data">
-                        <div class="title">Ingresa tus cupones de descuento</div>
-                        <textarea class="simple-field size-1"></textarea>
-                        <a ui-sref="checkout" class="button style-10">Pagar</a>
+                        <!--div class="title">Ingresa tus cupones de descuento</div>
+                        <textarea class="simple-field size-1"></textarea-->
+                        <button ui-sref="checkout" class="button style-10" ng-disabled="$root.cart.products.length == 0">
+                            Pagar
+                        </button>
                     </div>
                 </div>
                 <!--<div class="block-title size-1">Get shipping estimates</div>

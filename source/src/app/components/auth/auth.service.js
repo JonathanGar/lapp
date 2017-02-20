@@ -10,11 +10,9 @@
                 clientId = "ef4151a8-4809-4fdc-94c3-623dc45367f7",
                 _this = this;
 
-
-            if ($cookies.get('token')) {
+            /*if ($cookies.get('token')) {
                 currentUser = User.get();
-            }
-
+            }*/
 
             var authentication = {
                 isAuth: false,
@@ -45,37 +43,19 @@
              */
             var login = function(loginData) {
                 var deferred = $q.defer();
-                debugger;
                 $http.get(RESOURCE_API + "api/Clients/existing/" + encodeURIComponent(loginData.userName) + "/" + encodeURIComponent(loginData.password)).
                 success(function(response) {
-                    debugger;
-                    $rootScope.globals = {};
-
-                    if (loginData.useRefreshTokens) {
-                        $rootScope.globals.authorizationData = {
-                            token: response.access_token,
-                            userName: loginData.userName,
-                            refreshToken: response.refresh_token,
-                            useRefreshTokens: true
-                        };
-                    } else {
-                        $rootScope.globals.authorizationData = {
-                            token: response.access_token,
-                            userName: loginData.userName,
-                            refreshToken: "",
-                            useRefreshTokens: false
-                        };
-                    }
+                    //$cookies.putObject("authorizationData");
                     authentication.isAuth = true;
                     authentication.userName = loginData.userName;
                     authentication.useRefreshTokens = loginData.useRefreshTokens;
-                    authentication.refreshToken = response.refresh_token;
-                    //currentUser = User.get();
+                    response.logged = true;
+                    $cookies.putObject("client", response);
                     deferred.resolve(response);
                 }).
                 error(function(err) {
                     debugger;
-                    logout();
+                    //logout();
                     deferred.reject(err);
                 });
 
@@ -88,7 +68,8 @@
              * @param  {Function}
              */
             var logout = function() {
-                $rootScope.globals = {};
+                $cookies.putObject("client", null);
+                $cookies.getObject("fb", null);
                 currentUser = {};
                 authentication.isAuth = false;
                 authentication.userName = "";
@@ -191,10 +172,8 @@
 
             var fillAuthData = function() {
                 try {
-                    var authData = $rootScope.globals.authorizationData;
-                } catch (err) {
-                    //console.log(err);
-                }
+                    var authData = $cookies.getObject("authorizationData");
+                } catch (err) {}
 
                 if (authData) {
                     authentication.isAuth = true;
@@ -217,16 +196,13 @@
                         "Content-Type": "application/x-www-form-urlencoded"
                     }
                 }).success(function(response) {
-                    $rootScope.globals = {
-                        authorizationData: {
-                            token: response.access_token,
-                            userName: "",
-                            refreshToken: "",
-                            useRefreshTokens: false,
-                        },
-                        accessToken: response.access_token
+                    var authorizationData = {
+                        token: response.access_token,
+                        userName: "",
+                        refreshToken: "",
+                        useRefreshTokens: false
                     };
-
+                    $cookies.putObject("authorizationData", authorizationData);
                     authentication.isAuth = true;
                     authentication.userName = "";
                     authentication.useRefreshTokens = false;
@@ -243,9 +219,9 @@
             var refreshToken = function() {
                 var deferred = $q.defer();
                 try {
-                    var authData = $rootScope.globals.authorizationData;
+                    var authData = $cookies.getObject("authorizationData");
                 } catch (err) {
-                    //console.log(err);
+
                 }
 
                 if (authData) {
@@ -254,7 +230,7 @@
 
                         var _data = "&grant_type=refresh_token&refresh_token=" + authData.refreshToken + "&client_id=" + clientId;
 
-                        $rootScope.globals = {};
+
                         //serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                         $http.post({
                             url: RESOURCE_API_TOKEN,
@@ -264,13 +240,13 @@
                                 "Content-Type": "application/x-www-form-urlencoded"
                             }
                         }).success(function(response) {
-                            debugger;
-                            $rootScope.globals.authorizationData = {
+                            var authorizationData = {
                                 token: response.access_token,
                                 userName: response.userName,
                                 refreshToken: response.refresh_token,
                                 useRefreshTokens: true
                             };
+                            $cookies.putObject("authorizationData", authorizationData);
                             deferred.resolve(response);
                         }).error(function(err, status) {
                             logout();
@@ -303,8 +279,6 @@
                 return deferred.promise;
                 */
             };
-
-            _this.logout
 
             authServiceFactory.authentication = authentication;
             authServiceFactory.externalAuthData = externalAuthData;
