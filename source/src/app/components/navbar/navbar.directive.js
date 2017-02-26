@@ -5,9 +5,9 @@
         .module('lappweb')
         .directive('lappNavbar', lappNavbar);
 
-    lappNavbar.$inject = ['MainService', '$rootScope', 'ProductService', '$state', 'AuthFactory', '$cookies', '$log'];
+    lappNavbar.$inject = ['MainService', '$rootScope', 'ProductService', '$state', 'AuthFactory', '$cookies', '$log', '$uibModal'];
     /** @ngInject */
-    function lappNavbar(MainService, $rootScope, ProductService, $state, AuthFactory, $cookies, $log) {
+    function lappNavbar(MainService, $rootScope, ProductService, $state, AuthFactory, $cookies, $log, $uibModal) {
         var directive = {
             restrict: 'E',
             templateUrl: 'app/components/navbar/navbar.html',
@@ -23,7 +23,7 @@
         return directive;
 
         /** @ngInject */
-        function NavbarController(MainService, $rootScope, ProductService, $state, AuthFactory, $cookies, $log) {
+        function NavbarController(MainService, $rootScope, ProductService, $state, AuthFactory, $cookies, $log, $uibModal) {
             var vm = this;
 
             vm.showCatgories = false;
@@ -52,15 +52,33 @@
                 $log.error("obtainAccessToken", err);
             });
 
-
             var winW, winH, winScr, _isresponsive, _ismobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i);
 
             function logout() {
-                AuthFactory.logout(); //.then(function(data){
-                $log.log("Sesión cerrada");
-                //$state.go("login");
-                window.location.reload();
-                //});
+                $uibModal.open({
+                    animation: true,
+                    ariaLabelledBy: 'modal-title-bottom',
+                    ariaDescribedBy: 'modal-body-bottom',
+                    templateUrl: 'app/components/modal/modal.html',
+                    size: 'sm',
+                    controller: function($scope, $uibModalInstance) {
+                        $scope.okBtn = "Sí";
+                        $scope.cancelBtn = "No";
+                        $scope.title = 'Aviso';
+                        $scope.items = ["¿Desea cerrar sesión ahora?"];
+                        $scope.ok = function() {
+                            AuthFactory.logout();
+                            $log.log("Sesión cerrada");
+                            window.location.reload();
+                            $uibModalInstance.close("");
+                        };
+                        $scope.cancel = function() {
+                            $uibModalInstance.dismiss('cancel');
+                        };
+                    }
+                });
+
+
             }
             /*========================*/
             /* 02 - page calculations */
@@ -75,6 +93,11 @@
             /*=================================*/
             /* 03 - function on document ready */
             /*=================================*/
+            var client = $cookies.getObject("client");
+            if(client){
+                vm.window.logged = true;
+            }
+
             pageCalculations();
             var $searchDropDownOverflow = angular.element(document.querySelector('.search-drop-down .overflow'));
             var $searchDropDown = angular.element(document.querySelector('.search-drop-down'));

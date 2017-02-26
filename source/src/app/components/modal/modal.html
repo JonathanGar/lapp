@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <ul>
+        <li ng-repeat="item in items">
+            {{ item }}
+        </li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="ok()">{{okBtn}}</button>
+    <button class="btn btn-primary" type="button" ng-click="cancel()" ng-if="cancelBtn">{{cancelBtn}}</button>
+</div>

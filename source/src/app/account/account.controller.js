@@ -5,29 +5,33 @@
         .module('lappweb')
         .controller('AccountController', AccountController);
 
-    AccountController.$inject = ['$cookies', '$rootScope', '$stateParams', 'AccountService', 'toastr', 'MED_CODE', '$state', '$log'];
+    AccountController.$inject = ['$uibModal', '$cookies', '$rootScope', '$stateParams', 'AccountService', 'toastr', 'MED_CODE', '$state', '$log'];
 
     /** @ngInject */
-    function AccountController($cookies, $rootScope, $stateParams, AccountService, toastr, MED_CODE, $state, $log) {
+    function AccountController($uibModal, $cookies, $rootScope, $stateParams, AccountService, toastr, MED_CODE, $state, $log) {
         var vm = this;
         var client = $cookies.getObject("client");
+        vm.showForm = false;
+
         if (!(client && client.logged)) {
             $state.go('login');
             toastr.error('Necesita iniciar sesión primero', 'Información');
         } else {
-            /*$rootScope.client = {            
-                "name": "Jonathan García Escudero",                        
-                "phoneNumber": "1234567",
-                "id": "6e02f8b7-e609-47ea-9997-4f26ad938067"
-            };*/
 
             vm.address = {
                 "phoneNumber": client.phoneNumber,
                 "contactName": client.name,
             };
 
+            vm.addAddress = function() {
+                vm.showForm = true;
+            };
+
+            vm.showAddresses = function() {
+                vm.showForm = false;
+            };
+
             vm.SaveAddress = function(address) {
-                debugger;
                 if (!(/^[a-z0-9]+$/i.test(address.dir_1))) {
                     toastr.error("Por favor corrija el literal " + address.dir_0 + ": ", "Aviso");
                 } else if (!(/^[a-z0-9]+$/i.test(address.dir_2))) {
@@ -35,7 +39,6 @@
                 } else if (!(/^[a-z0-9]+$/i.test(address.dir_3))) {
                     toastr.error("Por favor corrija el literal -", "Aviso");
                 } else {
-
                     var add = address.dir_0 + "|" + address.dir_1 + "|" + address.dir_2 + "|" + address.dir_3;
                     var itemSave = {
                         "mainAddress": add,
@@ -49,6 +52,7 @@
 
                     AccountService.post(itemSave).then(function(address) {
                         toastr.success('Se ha creado la dirección', 'Éxito');
+                        vm.getAddresses();
                         vm.address = {};
                     }, function(err) {
                         toastr.error('Ha ocurrido un error interno', 'Información');
@@ -56,6 +60,53 @@
                     });
                 }
             };
+
+            vm.getAddresses = function() {
+                AccountService.getAddresses().then(function(addresses) {
+                    var addressesList = _.filter(addresses, {
+                        'clientId': client.id
+                    });
+                    vm.addressesList = addressesList;
+                    vm.showAddresses();
+                }, function(err) {
+                    vm.addressesList = null;
+                });
+            };
+
+            vm.deleteAddress = function(id, addressNote) {
+                var flag = false;
+
+                $uibModal.open({
+                    animation: true,
+                    ariaLabelledBy: 'modal-title-bottom',
+                    ariaDescribedBy: 'modal-body-bottom',
+                    templateUrl: 'app/components/modal/modal.html',
+                    size: 'sm',
+                    controller: function($scope, $uibModalInstance) {
+                        $scope.okBtn = "Sí";
+                        $scope.cancelBtn = "No";
+                        $scope.title = 'Alerta';
+                        $scope.items = ["¿Desea eliminar la dirección '" + addressNote + "'?"];
+                        $scope.ok = function() {
+                            $uibModalInstance.close("");
+                            AccountService.del(id).then(function(response) {
+                                toastr.success('Dirección eliminada', 'Información');
+                                vm.getAddresses();
+                                vm.showAddresses();
+
+                            }, function(err) {
+                                toastr.error('Ha ocurrido un error interno', 'Información');
+                            });
+                        };
+                        $scope.cancel = function() {
+                            $uibModalInstance.dismiss('cancel');
+                        };
+                    }
+                });
+            };
+
+
+            vm.getAddresses();
         }
     }
 })();

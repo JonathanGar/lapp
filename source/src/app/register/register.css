@@ -1,3 +1,7 @@
-.register-container{
+.register-container {
     margin-top: 200px;
+}
+
+.btn .btn-sm .btn-success .pull-right .ng-binding {
+    display: none;
 }

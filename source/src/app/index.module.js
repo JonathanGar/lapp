@@ -16,6 +16,7 @@
             'ui.bootstrap',
             'toastr',
             'ksSwiper'
+            //,'720kb.datepicker'
         ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$authProvider',

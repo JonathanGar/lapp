@@ -595,7 +595,7 @@ body {
 
 /*buttons*/
 
-.cta-drop-down{
+.cta-drop-down {
     margin-top: 13px;
     text-decoration: underline;
     color: white;
@@ -1651,6 +1651,7 @@ nav .simple-list .submenu a .fa {
         background: #fff;
         border-bottom: 2px #f7f7f7 solid;
         -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
     }
     header.fixed-header nav {
         max-width: 1310px;
@@ -1684,6 +1685,10 @@ nav .simple-list .submenu a .fa {
         display: block;
     }
     header.fixed-header nav>ul>li>a {
+        font-weight: 600;
+    }
+    header.fixed-header nav>ul>li>div>a {
+        margin-top: 20px;
         font-weight: 600;
     }
     .fixed-header-visible .header-functionality-entry {
@@ -4230,7 +4235,7 @@ body.style-1 .footer-columns-entry {
 
 #menu--main {
     /*background-color: #ed802f;*/
-    background-color:rgb(38, 97, 43);
+    background-color: rgb(38, 97, 43);
 }
 
 @media (min-width: 1200px) {

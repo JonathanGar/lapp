@@ -41,7 +41,7 @@
                                                     <div class="media-body">
                                                         <span class="media-meta pull-right">{{order.updatedAt | date}}</span>
                                                         <h4 class="title">
-                                                            Pedido: {{orders.clientName}}
+                                                            Cliente: {{orders.clientName}}
                                                             <span class="pull-right badge-{{order.status}}">{{order.status | status}}</span>
                                                         </h4>
                                                         <p class="summary">Total: {{ order.total | currency:"$":0 }}</p>

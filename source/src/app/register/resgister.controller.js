@@ -10,12 +10,11 @@
     /** @ngInject */
     function RegisterController($rootScope, $stateParams, RegisterService, toastr, $state, $log, $cookies) {
         var vm = this;
-
+        vm.opened = false;
         vm.format = 'MM/dd/yyyy';
         vm.client = {
             gender: 0
         };
-
         getProfile();
 
         vm.SaveClient = function(client) {
@@ -34,7 +33,8 @@
             }
             itemSave.birthDate = itemSave.birthDate.toISOString();
             RegisterService.post(itemSave).then(function(data) {
-                toastr.success('Usuario creado exitosamente', 'Información');
+                window.logged = true;
+                toastr.success('¡Usuario Registrado con Éxito!', 'Información');
                 vm.client = {};
                 data.logged = true;
                 $cookies.putObject("client", data);
@@ -62,7 +62,6 @@
 
         function getProfile() {
             var fb = $cookies.getObject("fb");
-            debugger;
             if (fb && fb.id) {
                 vm.fb = true,
                     vm.client.name = fb.name,

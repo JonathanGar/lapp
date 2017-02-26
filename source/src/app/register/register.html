@@ -30,7 +30,7 @@
                 </label>
                 <div class="col-md-5">
                     <p class="input-group" ng-click="register.open($event)">
-                        <input id="fecha" placeholder="1900-12-01" class="form-control date-md" name="fecha" type="date" ng-model="register.client.birthDate" is-open="register.opened" min-date="'1900-01-01'" max-date="'2099-12-31'" ng-required="true" close-text="Close" />
+                        <input uib-datepicker-popup="yyyy-MM-dd" ng-click="vm.open()" class="form-control" name="fecha" ng-model="register.client.birthDate" is-open="register.opened" min-date="'1900-01-01'" max-date="'2099-12-31'" ng-required="true" show-button-bar="false" />
                         <!-- datepicker-options="register.dateOptions" date-disabled="disabled(date, mode)" -->
                     </p>
                 </div>

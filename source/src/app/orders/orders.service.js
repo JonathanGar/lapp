@@ -5,9 +5,9 @@
     angular
         .module('lappweb')
         .factory('OrdersService', OrdersService);
-    OrdersService.$inject = ['RESOURCE_API', 'MED_CODE', '$http', '$q'];
+    OrdersService.$inject = ['RESOURCE_API', 'MED_CODE', '$http', '$q', '$log'];
 
-    function OrdersService(RESOURCE_API, MED_CODE, $http, $q) {
+    function OrdersService(RESOURCE_API, MED_CODE, $http, $q, $log) {
         return {
             orders: orders,
             order: order

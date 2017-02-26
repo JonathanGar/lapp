@@ -229,9 +229,6 @@
                     if (authData.useRefreshTokens) {
 
                         var _data = "&grant_type=refresh_token&refresh_token=" + authData.refreshToken + "&client_id=" + clientId;
-
-
-                        //serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                         $http.post({
                             url: RESOURCE_API_TOKEN,
                             method: 'POST',
@@ -257,28 +254,20 @@
                 return deferred.promise;
             };
 
-            var registerExternal = function(registerExternalData) {
-                /*
+            var existsEmail = function(email) {
                 var deferred = $q.defer();
-
-                $http.post(serviceBase + 'api/account/registerexternal', registerExternalData).success(function(response) {
-
-                    localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
-
-                    _authentication.isAuth = true;
-                    _authentication.userName = response.userName;
-                    _authentication.useRefreshTokens = false;
-
+                $http.get(RESOURCE_API + "api/Clients/" + encodeURIComponent(email)).
+                success(function(response) {
                     deferred.resolve(response);
-
-                }).error(function(err, status) {
-                    _logout();
+                }).
+                error(function(err) {
                     deferred.reject(err);
                 });
-
                 return deferred.promise;
-                */
             };
+
+            /*var registerExternal = function(registerExternalData) {
+            };*/
 
             authServiceFactory.authentication = authentication;
             authServiceFactory.externalAuthData = externalAuthData;
@@ -290,12 +279,12 @@
             authServiceFactory.getCurrentUser = getCurrentUser;
             authServiceFactory.isLoggedIn = isLoggedIn;
             authServiceFactory.isLoggedInAsync = isLoggedInAsync;
-            authServiceFactory.isAdmin = isAdmin;
+            //authServiceFactory.isAdmin = isAdmin;
             authServiceFactory.getToken = getToken;
             authServiceFactory.obtainAccessToken = obtainAccessToken;
             authServiceFactory.fillAuthData = fillAuthData;
-            authServiceFactory.refreshToken = refreshToken;
-            //authServiceFactory.registerExternal = registerExternal;
+            //authServiceFactory.refreshToken = refreshToken;
+            authServiceFactory.existsEmail = existsEmail;
 
             return authServiceFactory;
         });

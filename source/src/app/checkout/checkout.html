@@ -31,7 +31,7 @@
                                             </label>
                                         </form>
                                     </p-->
-                                    <a ui-sref="loginForm" class="button style-10">Iniciar sesión</a>
+                                    <a ui-sref="login" class="button style-10">Iniciar sesión</a>
                                     <a ui-sref="register" class="button style-10">Registrarse</a>
                                 </div>
                             </div>
@@ -96,12 +96,32 @@
                         </div>
                     </div>
                     <div class="accordeon-title">
-                        <span class="number">4</span>Horario de entrega
+                        <span class="number">4</span>Dirección de envío
                         <label class="glyphicon" ng-class="checkout.step4"></label>
                     </div>
                     <div class="accordeon-entry">
                         <div class="article-container style-1">
-                            <h4>Escoge el tiempo de entrega de tu pedido:</h4>
+                            <h4 ng-if="checkout.addressesList">Seleccione alguna de sus direcciones</h4>
+                            <div ng-if="!checkout.addressesList">
+                                <h4>No tiene direcciones registradas...</h4> <a ui-sref="account">registrar ahora</a></div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-success" ng-class="address.active" ng-click="checkout.setAddress(address)" style="color: black" ng-repeat="address in checkout.addressesList">
+                                    <h4 class="list-group-item-heading">{{address.notes}}</h4>
+                                    <p class="list-group-item-text">
+                                        {{address.mainAddress|address}}
+                                    </p>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordeon-title">
+                        <span class="number">5</span>Horario de entrega
+                        <label class="glyphicon" ng-class="checkout.step5"></label>
+                    </div>
+                    <div class="accordeon-entry">
+                        <div class="article-container style-1">
+                            <h4>Escoge el tiempo de entrega aproximado de tu pedido</h4>
                             <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-success" ng-class="schedule.active" ng-click="checkout.setSchedule(schedule)" style="color: black" ng-repeat="schedule in checkout.schedulesCtr">
                                     <h4 class="list-group-item-heading">{{schedule.cuando}}</h4>
@@ -114,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordeon-title"><span class="number">5</span>Revisión del pedido</div>
+                    <div class="accordeon-title"><span class="number">6</span>Revisión del pedido</div>
                     <div class="accordeon-entry">
                         <div class="article-container style-1">
                             <table class="table table-responsive shop_table woocommerce-checkout-review-order-table">
@@ -184,7 +204,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="accordeon-title"><span class="number">6</span>Método de pago</div>
+                <div class="accordeon-title"><span class="number">7</span>Método de pago</div>
                 <div class="accordeon-entry">
                     <div class="article-container style-1">
                         <div id="payment" class="woocommerce-checkout-payment">

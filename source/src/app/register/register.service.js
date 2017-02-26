@@ -5,7 +5,8 @@
         .service('RegisterService', ['RESOURCE_API', 'RESOURCE_API_TEMP', '$http', '$q', '$filter', 'toastr', function(RESOURCE_API, RESOURCE_API_TEMP, $http, $q, $filter, toastr) {
 
             return service = {
-                post: post
+                post: post,
+                guid: guid
             };
 
             function post(itemSave) {
