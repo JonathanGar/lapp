@@ -5,3 +5,19 @@
 .btn .btn-sm .btn-success .pull-right .ng-binding {
     display: none;
 }
+
+.label-input {
+    padding-bottom: 8px;
+}
+
+.input-form {
+    width: 60%;
+}
+
+.select-form {
+    width: 20%;
+}
+
+.date-form {
+    width: 30%;
+}

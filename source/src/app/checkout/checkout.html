@@ -19,43 +19,10 @@
                                     <p>
                                         Si aún no tienes una cuenta en nuestra plataforma
                                     </p>
-                                    <!--p>
-                                        <form>
-                                            <label class="checkbox-entry radio" ng-click="checkout.changeStateLogin(true)">
-                                              <input type="radio" name="loggin" ng-checked="checkout.loggin" />
-                                             <span class="check"></span> <a ng-click="checkout.changeStateLogin(true)"> <b>Iniciar sesión</b></a>
-                                            </label>
-                                            <label class="checkbox-entry radio">
-                                              <input type="radio" name="loggin" ng-checked="!checkout.loggin" />
-                                              <span class="check"></span><a ng-click="checkout.changeStateLogin(false)">  <b>Registrarse</b></a>
-                                            </label>
-                                        </form>
-                                    </p-->
                                     <a ui-sref="login" class="button style-10">Iniciar sesión</a>
                                     <a ui-sref="register" class="button style-10">Registrarse</a>
                                 </div>
                             </div>
-                            <!--div class="col-md-6 information-entry">
-                                <div class="article-container style-1" ng-controller="LoginController as login" ng-hide="true">
-                                    <h3>Iniciar sesión</h3>
-                                    <p>
-                                        Puedes iniciar sesión en nuestra plataforma con alguna de estas opciones
-                                    </p>
-                                    <div class="btn-group-vertical" role="group" aria-label="">
-                                        <a ui-sref="register" class="btn btn-local">
-                                            <i class="fa fa-user">  Register Account</i>
-                                        </a>
-                                        <br/>
-                                        <a ng-click="OauthButtons.loginOauth('facebook')" class="btn btn-facebook">
-                                            <i class="fa fa-facebook"></i> Connect with Facebook
-                                        </a>
-                                        <br/>
-                                        <a ng-click="OauthButtons.loginOauth('google')" class="btn btn-google">
-                                            <i class="fa fa-google-plus"></i>Connect with Google+
-                                        </a>
-                                    </div>
-                                </div>
-                            </div-->
                         </div>
                     </div>
                     <div class="accordeon-title">
@@ -182,23 +149,25 @@
                             <tbody>
                                 <tr class="cart_item">
                                     <td class="product-total">
-                                        <span class="amount">1</span>
+                                        <span class="amount">
+                                            <strong style="font-weight: 600; font-size: large;">{{checkout.establishedAddress.notes}}</strong>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr class="cart_item">
                                     <td class="product-total">
-                                        <span class="amount">2</span>
+                                        <span class="pull-left glyphicon glyphicon-earphone"> {{ checkout.establishedAddress.phoneNumber}}</span>
                                     </td>
                                 </tr>
                                 <tr class="cart_item">
                                     <td class="product-total">
-                                        <span class="amount">3</span>
+                                        {{ checkout.establishedAddress.mainAddress | address}}
                                     </td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr class="order-total">
-                                    <th>Total</th>
+                                    <th>{{ checkout.establishedAddress.type}}</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -217,7 +186,7 @@
                                   <span class="check"></span> <b>Tarjeta de Credito</b>
                                 </label-->
                             <div class="form-row place-order">
-                                <a class="button style-10">Confirmar pedido</a>
+                                <a class="button style-10" ng-click="checkout.check()">Confirmar pedido</a>
                             </div>
                             <div class="clear"></div>
                         </div>

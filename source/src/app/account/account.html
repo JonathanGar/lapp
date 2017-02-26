@@ -15,7 +15,6 @@
                     <td>
                         <div class="media">
                             <div class="media-body">
-                                <!--span class="media-meta pull-right">{{address.updatedAt}}</span-->
                                 <strong style="font-weight: 600; font-size: large;">{{address.notes}}</strong>
                                 <h4 class="title">
                                     <a class="pull-right glyphicon glyphicon-trash" ng-click="account.deleteAddress(address.id, address.notes)"></a>
@@ -39,17 +38,15 @@
     </div>
     <div ng-show="account.showForm" style="margin-bottom: 25px;">
         <form id="accountForm" name="accountForm" class="form-horizontal" ng-submit="account.SaveAddress(account.address);">
-            <div class="tab-pane active" id="basic-info" style="margin-top: 2em;">
+            <div class="tab-pane " id="basic-info" style="margin-top: 2em;">
                 <div class="form-group required">
-                    <label class="col-md-4 control-label" for="account.address.phoneNumber">
-                        Nombre de la Dirección
+                    <label class="col-md-3 control-label pull-left label-input" for="account.address.notes">
+                        Nombre de Dirección
                     </label>
-                    <div class="col-md-5">
-                        <input ng-model="account.address.notes" name="address-notes" type="text" class="form-control input-md" ng-required="true">
-                    </div>
+                    <input ng-model="account.address.notes" name="address-notes" type="text" class="form-control input-md input-form" ng-required="true">
                 </div>
                 <div class="form-group required">
-                    <label class="col-md-4 control-label" for="account.address.dir_0">
+                    <label class="col-md-4 control-label pull-left label-select" for="account.address.dir_0">
                         Dirección
                     </label>
                     <div class="col-md-2">
@@ -68,13 +65,13 @@
                     </div>
                 </div>
                 <div class="form-group required">
-                    <label class="col-md-4 control-label" for="account.address.dir_2">
+                    <label class="col-md-4 pull-left control-label label-input" style="padding-bottom: 13px;" for="account.address.dir_2">
                         #
                     </label>
                     <div class="col-md-2">
                         <input ng-model="account.address.dir_2" name="address-dir_2" type="text" class="form-control input-md" ng-required="true" style="text-transform:uppercase">
                     </div>
-                    <div class="col-md-1" style="width: 0;">
+                    <div class="col-md-1 label-input" style="width: 0;">
                         _
                     </div>
                     <div class="col-md-2">
@@ -82,27 +79,27 @@
                     </div>
                 </div>
                 <div class="form-group required">
-                    <label class="col-md-4 control-label" for="account.address.type">
+                    <label class="col-md-4 control-label pull-left label-input" for="account.address.type">
                         Indicaciones
                     </label>
                     <div class="col-md-5">
-                        <input ng-model="account.address.type" placeholder="Edificio, Unidad, Torre..." name="address-type" type="text" class="form-control input-md" ng-required="true">
+                        <input class="form-control input-md input-form" ng-model="account.address.type" placeholder="Edificio, Unidad, Torre..." name="address-type" type="text" ng-required="true">
                     </div>
                 </div>
                 <div class="form-group required">
-                    <label class="col-md-4 control-label" for="account.address.phoneNumber">
+                    <label class="col-md-4 pull-left control-label label-input" for="account.address.phoneNumber">
                         Teléfono
                     </label>
                     <div class="col-md-5">
-                        <input ng-model="account.address.phoneNumber" name="address-phoneNumber" type="text" class="form-control input-md" ng-required="true">
+                        <input class="form-control input-md input-form" ng-model="account.address.phoneNumber" name="address-phoneNumber" type="text" ng-required="true">
                     </div>
                 </div>
                 <div class="form-group required">
-                    <label class="col-md-4 control-label" for="account.address.contactName">
+                    <label class="col-md-4 control-label pull-left label-input" for="account.address.contactName">
                         Nombre del Contacto
                     </label>
                     <div class="col-md-5">
-                        <input ng-model="account.address.contactName" name="address-contactName" type="text" class="form-control input-md" required="">
+                        <input class="form-control input-md input-form" ng-model="account.address.contactName" name="address-contactName" type="text" required="">
                     </div>
                 </div>
             </div>

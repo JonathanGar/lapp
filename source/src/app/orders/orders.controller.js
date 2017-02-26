@@ -6,16 +6,19 @@
         .module('lappweb')
         .controller('OrdersController', OrdersController);
 
-    OrdersController.$inject = ['MainService', 'OrdersService', 'toastr', '$rootScope', '$stateParams', '$log'];
+    OrdersController.$inject = ['MainService', 'OrdersService', 'toastr', '$rootScope', '$stateParams', '$log', '$cookies', '$state'];
 
-    function OrdersController(MainService, OrdersService, toastr, $rootScope, $stateParams, $log) {
+    function OrdersController(MainService, OrdersService, toastr, $rootScope, $stateParams, $log, $cookies, $state) {
         var vm = this;
-        /*var settings = JSON.parse(localStorage.getItem('settings'));
-        vm.clientId = _.find(settings, {
-            'key': 'clientID'
-        }).value;*/
-        vm.clientId = "6e02f8b3-e609-47ea-9997-4f26ad938066";
-        vm.clientName = "Jonathan García Escudero";
+        /*var settings = JSON.parse(localStorage.getItem('settings')); */
+        var client = $cookies.getObject("client");
+        if (client) {
+            vm.clientId = client.id; //"6e02f8b3-e609-47ea-9997-4f26ad938066";
+            vm.clientName = client.name;
+        } else {
+            toastr.error("Debe iniciar sesión para ver sus pedidos", "Aviso");
+            $state.go('login');
+        }
 
         if ($stateParams.id) {
             OrdersService.order($stateParams.id).then(function(order) {
@@ -29,7 +32,11 @@
         } else if (vm.clientId) {
             OrdersService.orders().then(function(orders) {
                 if (!orders.message) {
+                    debugger;
                     vm.orders = _.filter(orders, { "clientId": vm.clientId });
+                }
+                if (vm.orders.length === 0) {
+                    toastr.error("Aún no ha registrado pedidos", "Aviso");
                 }
             }).catch(function(err) {
                 $log.error('Error fetching feed:', err);

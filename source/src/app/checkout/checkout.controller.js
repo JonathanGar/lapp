@@ -5,11 +5,12 @@
         .module('lappweb')
         .controller('CheckoutController', CheckoutController);
 
-    CheckoutController.$inject = ['$rootScope', '$stateParams', '$cookies', 'CheckoutService', 'toastr', '$log', 'CartService', '$state', 'AccountService'];
+    CheckoutController.$inject = ['Utilities', '$window', '$rootScope', '$stateParams', '$cookies', 'CheckoutService', 'toastr', '$log', 'CartService', '$state', 'AccountService'];
 
     /** @ngInject */
-    function CheckoutController($rootScope, $stateParams, $cookies, CheckoutService, toastr, $log, CartService, $state, AccountService) {
+    function CheckoutController(Utilities, $window, $rootScope, $stateParams, $cookies, CheckoutService, toastr, $log, CartService, $state, AccountService) {
         //Schedule: Service Availability 
+        $window.scrollTo(0, 0);
         var vm = this,
             oldSchedule = null,
             oldAddress = null;
@@ -17,6 +18,18 @@
             vm.clientName = '', vm.clientEmail = '', vm.client;
 
         init();
+
+        function init() {
+            getCarProducts();
+            var client = $cookies.getObject("client");
+            if (client && client.logged) {
+                vm.logged = true;
+                vm.step1 = "glyphicon-ok";
+                vm.client = client;
+                getAddresses();
+            }
+            getServiceAvailability();
+        };
 
         $('.accordeon-title').on('click', function() {
             $(this).toggleClass('active');
@@ -37,18 +50,6 @@
                     }
                 );
             }
-        };
-
-        function init() {
-            getCarProducts();
-            var client = $cookies.getObject("client");
-            if (client && client.logged) {
-                vm.logged = true;
-                vm.step1 = "glyphicon-ok";
-                vm.client = client;
-                getAddresses();
-            }
-            getServiceAvailability();
         };
 
         function getServiceAvailability() {
@@ -83,7 +84,6 @@
                 angular.forEach(res, function(product, key) {
                     vm.subtotal += product.value;
                 });
-                console.log(res);
             }, function(err) {
                 toastr.error("Debe añadir productos al carrito", "Error");
                 $state.go("home");
@@ -132,29 +132,38 @@
             });
         };
 
+        function check() {
+            var items = [];
+            if (!vm.client) {
+                items.push("Debe iniciar sesión para realizar su pedido");
+            }
+
+            if (vm.clientName == '' || !Utilities.isEmail(vm.clientEmail)) {
+                items.push("Debe verificar los campos de 'Datos de Facturación'");
+            }
+
+            if (!vm.establishedAddress) {
+                items.push("Debe seleccionar una dirección de envío");
+            }
+
+            if (!vm.establishedSched) {
+                items.push("Debe seleccionar un horario de entrega");
+            }
+
+            Utilities.showModal("OK", null, "Aviso", items);
+        };
+
         function post() {
             var delivery = {
-                //"createdAt": "2016-09-09T15:12:51.756Z",
-                //"version": "AAAAAAAAI7Y=",
-                //"id": "02a96a57-9164-4fb6-be4f-e698238136e9",
                 "employeeId": vm.establishedSched.employeeId,
                 "serviceAvailabilityId": vm.establishedSched.id,
                 "clientId": vm.client.id,
                 "addressId": vm.establishedAddress.id,
-                //"employeeEffortPoints": 0,
-                //"systemEffortPoints": 20,
                 "total": vm.subtotal,
-                //"totalDiscounts": -4800,
                 "deliveryCost": 5500,
                 "couponsRedeemed": 0,
                 "coupon": vm.coupon,
-                //"deliverySecondaryId": "LR1473433972",
-                //"invoiceNumber": null,
-                "deliveryDateTime": vm.establishedSched.dateTime,
-                //"deliveredAt": "2016-09-09T10:12:50Z",
-                //"attendanceStartedAt": "1900-01-01T00:00:00Z",
-                //"sentAt": "2016-09-09T10:12:50Z",
-                //"status": "Cancelled"
+                "deliveryDateTime": vm.establishedSched.dateTime
             };
             CheckoutService.post(delivery).then(function(response) {
                 debugger;
@@ -168,5 +177,6 @@
         vm.setAddress = setAddress;
         vm.getAddresses = getAddresses;
         vm.post = post;
+        vm.check = check;
     }
 })();

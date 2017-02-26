@@ -6,9 +6,9 @@
                     <div class="title-1">Producto</div>
                     <div class="title-2">Añadir</div>
                 </div>
-                <div ng-if="!$root.cart.products.length" class="message-box message-info">
+                <div ng-if="!$root.favorites.products.length" class="message-box message-info">
                     <div class="message-icon"><i class="fa fa-exclamation"></i></div>
-                    <div class="message-text"><b>Hola!</b> Para ver productos acá primero agregalos a tus favorits.</div>
+                    <div class="message-text"><b>¡Hola!</b> Para ver productos acá primero agregalos a tus favoritos.</div>
                 </div>
 
                 <div class="wishlist-box" ng-repeat="product in $root.favorites.products">

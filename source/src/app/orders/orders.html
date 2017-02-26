@@ -33,6 +33,7 @@
                                 </div>
                             </div>
                             <div class="table-container">
+                                <span ng-if="orders.orders.length === 0">No tiene pedidos registrados</span>
                                 <table class="table table-filter">
                                     <tbody>
                                         <tr ng-repeat="order in orders.orders" data-status="badge-{{order.status}}" data-id="{{order.id}}" ui-sref="order-detail({ id: order.id})">

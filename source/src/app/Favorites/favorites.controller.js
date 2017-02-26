@@ -5,11 +5,11 @@
         .module('lappweb')
         .controller('FavoritesController', FavoritesController);
 
-    FavoritesController.$inject = ['CartService', '$rootScope', '$stateParams', 'FavoritesService', 'toastr'];
+    FavoritesController.$inject = ['CartService', '$rootScope', '$stateParams', 'FavoritesService', 'toastr', '$window'];
 
     /** @ngInject */
-    function FavoritesController(CartService, $rootScope, $stateParams, FavoritesService, toastr) {
-
+    function FavoritesController(CartService, $rootScope, $stateParams, FavoritesService, toastr, $window) {
+        $window.scrollTo(0, 0);
         angular.element(document.querySelector('.information-blocks')).css({
             'padding-top': angular.element(document.querySelector('header')).outerHeight(true)
         });

@@ -1,3 +1,15 @@
-.register-container{
+.register-container {
     margin-top: 200px;
+}
+
+.label-input {
+    padding-bottom: 15px;
+}
+
+.input-form {
+    width: 60%;
+}
+
+.label-select {
+    padding-bottom: 13px;
 }
