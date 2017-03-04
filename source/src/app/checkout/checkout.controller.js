@@ -5,7 +5,7 @@
         .module('lappweb')
         .controller('CheckoutController', CheckoutController);
 
-    CheckoutController.$inject = ['Utilities', '$window', '$rootScope', '$stateParams', '$cookies', 'CheckoutService', 'toastr', '$log', 'CartService', '$state', 'AccountService'];
+    CheckoutController.$inject = ['Utilities', '$window', '$rootScope', '$stateParams', '$cookies', 'CheckoutService', 'toastr', '$log', 'CartService', '$state', 'AccountService', 'vcRecaptchaService'];
 
     /** @ngInject */
     function CheckoutController(Utilities, $window, $rootScope, $stateParams, $cookies, CheckoutService, toastr, $log, CartService, $state, AccountService) {
@@ -56,8 +56,7 @@
             CheckoutService.getServiceAvailability().then(
                 function(schedules) {
                     var schedulesCtr = [];
-                    //TODO
-                    var hoy = new Date("January 26, 2017 11:13:00");
+                    var hoy = new Date(); //var hoy = new Date("January 26, 2017 11:13:00");
                     angular.forEach(schedules, function(value, key) {
                         schedules[key].dateTime = new Date(value.dateTime);
                         if (schedules[key].dateTime - hoy > 0) {
@@ -79,6 +78,7 @@
 
         function getCarProducts() {
             CartService.get().then(function(res) {
+                debugger;
                 vm.products = res;
                 vm.subtotal = 0;
                 angular.forEach(res, function(product, key) {
@@ -154,29 +154,41 @@
         };
 
         function post() {
+            //vm.captcha();
+            debugger;
+            var coupon = (vm.coupon) ? vm.coupon : "";
             var delivery = {
                 "employeeId": vm.establishedSched.employeeId,
                 "serviceAvailabilityId": vm.establishedSched.id,
                 "clientId": vm.client.id,
                 "addressId": vm.establishedAddress.id,
                 "total": vm.subtotal,
-                "deliveryCost": 5500,
+                "deliveryCost": 0,
                 "couponsRedeemed": 0,
                 "coupon": vm.coupon,
-                "deliveryDateTime": vm.establishedSched.dateTime
+                "deliveryDateTime": vm.establishedSched.dateTime,
+                "EffortPoints": vm.establishedSched.assignedEffortPoints
             };
-            CheckoutService.post(delivery).then(function(response) {
+            CheckoutService.post(delivery, vm.products).then(function(response) {
                 debugger;
             }, function(err) {
                 debugger;
             });
         };
 
+        function captcha() {
+            Utilities.verifyCaptcha({ secret: "6Lcj7BYUAAAAALzKvJZ0SlDIKXJR2J6bfs64PPzv", response: vm.recaptchaResponse }).then(function(response) {
+                debugger;
+            }, function(err) {
+                debugger;
+            });
+        };
         vm.applyCoupon = applyCoupon;
         vm.setSchedule = setSchedule;
         vm.setAddress = setAddress;
         vm.getAddresses = getAddresses;
         vm.post = post;
         vm.check = check;
+        vm.captcha = captcha;
     }
 })();

@@ -118,7 +118,7 @@
                                             <strong class="product-quantity">× {{product.quantityToAdd}}</strong>
                                         </td>
                                         <td class="product-total">
-                                            <span class="amount">{{product.value | currency:"$":0}}</span>
+                                            <span class="amount">{{(product.value * product.quantityToAdd) | currency:"$":0}}</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -135,7 +135,7 @@
                                     </tr>
                                     <tr class="order-total">
                                         <th>Total</th>
-                                        <td><strong><span class="amount">{{checkout.subtotal | currency:"$":0}}</span></strong> </td>
+                                        <td><strong><span class="amount">{{$root.cart.subTotal | currency:"$":0}}</span></strong> </td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -180,13 +180,16 @@
                             <label class="checkbox-entry radio">
                                   <input type="radio" name="custom-name" checked />
                                   <span class="check"></span> <b>Efectivo</b>
-                                </label>
+                            </label>
                             <!--label class="checkbox-entry radio">
                                   <input type="radio" name="custom-name" />
                                   <span class="check"></span> <b>Tarjeta de Credito</b>
                                 </label-->
                             <div class="form-row place-order">
-                                <a class="button style-10" ng-click="checkout.check()">Confirmar pedido</a>
+                                <center>
+                                    <div vc-recaptcha class="g-recaptcha" key="" ng-model="checkout.recaptchaResponse"> </div>
+                                </center>
+                                <a class="button style-10" ng-click="checkout.post()">Confirmar pedido</a>
                             </div>
                             <div class="clear"></div>
                         </div>

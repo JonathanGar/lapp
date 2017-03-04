@@ -38,11 +38,56 @@
             return deferred.promise;
         };
 
-        function post(delivery) {
+        function post(delivery, _products) {
             delivery.id = RegisterService.guid();
             debugger;
+            var products = [];
+            angular.forEach(_products, function(product, key) {
+                products.push({
+                    "Subtotal": product.quantityToAdd * product.value,
+                    "Discounts": 0,
+                    "Quantity": product.quantityToAdd,
+                    "DeliveryId": delivery.id,
+                    "Product": null,
+                    "ProductId": product.id,
+                    "Price": null,
+                    "PriceId": product.priceId,
+                    "Promotion": product.promotion,
+                    "PromotionId": null,
+                    "id": RegisterService.guid(),
+                    "createdAt": null,
+                    "updatedAt": null,
+                    "deleted": false
+                });
+            });
+            debugger;
+            var data = {
+                "DeliverySecondaryId": null,
+                "ClientId": delivery.clientId,
+                "Status": 1,
+                "DeliveryDateTime": delivery.deliveryDateTime.toISOString(),
+                "DeliveryCost": delivery.deliveryCost,
+                "TotalDiscounts": 0,
+                "Total": delivery.total,
+                "SystemEffortPoints": delivery.EffortPoints,
+                "EmployeeEffortPoints": 0,
+                "AddressId": delivery.addressId,
+                "Address": null,
+                "Coupon": delivery.coupon,
+                "Ratings": null,
+                "Products": products,
+                "Promotions": [],
+                "EmployeeId": delivery.employeeId,
+                "Employee": null,
+                "SentAt": (new Date()).toISOString(),
+                "id": delivery.id,
+                "createdAt": null,
+                "updatedAt": null,
+                "deleted": false
+            };
+            debugger;
             var deferred = $q.defer();
-            $http.post(RESOURCE_API + '/api/deliveries', delivery)
+            $http.post(RESOURCE_API + '/api/deliveries', data)
                 .success(function(res) {
                     debugger;
                     deferred.resolve(res);

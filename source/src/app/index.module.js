@@ -15,7 +15,8 @@
             'satellizer',
             'ui.bootstrap',
             'toastr',
-            'ksSwiper'
+            'ksSwiper',
+            'vcRecaptcha'
             //,'720kb.datepicker'
         ])
 

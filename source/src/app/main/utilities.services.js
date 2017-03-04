@@ -2,12 +2,13 @@
 
     angular
         .module('lappweb')
-        .service('Utilities', ['$uibModal', 'GRAPH_API_URL', 'RESOURCE_API', 'RESOURCE_API_TOKEN', 'MED_CODE', '$q', '$rootScope', '$log',
-            function($uibModal, GRAPH_API_URL, RESOURCE_API, RESOURCE_API_TOKEN, MED_CODE, $q, $rootScope, $log) {
+        .service('Utilities', ['$uibModal', 'GRAPH_API_URL', 'RESOURCE_API', 'RESOURCE_API_TOKEN', 'MED_CODE', '$http', '$q', '$rootScope', '$log',
+            function($uibModal, GRAPH_API_URL, RESOURCE_API, RESOURCE_API_TOKEN, MED_CODE, $http, $q, $rootScope, $log) {
 
                 var service = {
                     isEmail: isEmail,
-                    showModal: showModal
+                    showModal: showModal,
+                    verifyCaptcha: verifyCaptcha
                 };
 
                 return service;
@@ -17,7 +18,7 @@
                     return re.test(email);
                 };
 
-                function showModal(okBtn, cancelBtn = null, title, items) {
+                function showModal(okBtn, cancelBtn, title, items) {
                     $uibModal.open({
                         animation: true,
                         ariaLabelledBy: 'modal-title-bottom',
@@ -37,6 +38,27 @@
                             };
                         }
                     });
+                };
+
+                function verifyCaptcha(params) {
+                    debugger;
+                    var deferred = $q.defer();
+                    var req = {
+                        "method": 'POST',
+                        "url": "https://www.google.com/recaptcha/api/siteverify?secret=" + params.secret + "&response=" + params.response,
+                        "headers": {
+                            'Content-Type': "application/x-www-form-urlencoded;charset=utf-8"
+                        }
+                    }
+                    $http(req).success(function(response) {
+                        debugger;
+                        deferred.resolve(response);
+                    }).
+                    error(function(err) {
+                        debugger;
+                        deferred.reject(err);
+                    });
+                    return deferred.promise;
                 }
 
             }
