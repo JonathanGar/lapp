@@ -10,6 +10,7 @@
     /** @ngInject */
     function LoginController($window, MainService, $rootScope, $stateParams, $auth, $state, toastr, LoginService, $cookies, $location, AuthFactory) {
         var vm = this;
+        vm.onSpinner = false;
 
         if (window.logged) {
             $state.go("account");
@@ -17,17 +18,19 @@
 
         function authenticate(provider) {
             $auth.authenticate(provider).then(function(response) {
+                    vm.onSpinner = true;
                     MainService.getFacebookProfile(response.access_token).then(function(dataFacebook) {
                         $cookies.putObject("fb", dataFacebook);
                         AuthFactory.existsEmail(dataFacebook.email).then(
                             function(dataEmail) {
                                 //Existe la cuenta                                
                                 LoginService.Login(dataFacebook.email, dataFacebook.id).then(function(user) {
+                                    vm.onSpinner = false;
                                     toastr.success(user.name, "Bienvenido");
                                     window.logged = true;
-
                                     _goto();
                                 }, function(err) {
+                                    vm.onSpinner = false;
                                     if (err.Code == 110) {
                                         toastr.error("La cuenta " + dataFacebook.email + " ya se encuentra registrada", "Error");
                                         $state.go('loginForm');
@@ -37,6 +40,7 @@
                                 });
                             },
                             function(responseErr) {
+                                vm.onSpinner = false;
                                 //La cuenta no existe
                                 if (responseErr.Code == 102) {
                                     $state.go('register');
@@ -48,6 +52,7 @@
                     });
                 })
                 .catch(function(response) {
+                    vm.onSpinner = false;
                     toastr.error("Error iniciando sesión", "Error");
                 });
         };

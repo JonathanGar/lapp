@@ -6,10 +6,11 @@
         .module('lappweb')
         .controller('OrdersController', OrdersController);
 
-    OrdersController.$inject = ['MainService', 'OrdersService', 'toastr', '$rootScope', '$stateParams', '$log', '$cookies', '$state'];
+    OrdersController.$inject = ['$window', 'MainService', 'OrdersService', 'toastr', '$rootScope', '$stateParams', '$log', '$cookies', '$state'];
 
-    function OrdersController(MainService, OrdersService, toastr, $rootScope, $stateParams, $log, $cookies, $state) {
+    function OrdersController($window, MainService, OrdersService, toastr, $rootScope, $stateParams, $log, $cookies, $state) {
         var vm = this;
+        $window.scrollTo(0, 0);
         /*var settings = JSON.parse(localStorage.getItem('settings')); */
         var client = $cookies.getObject("client");
         if (client) {

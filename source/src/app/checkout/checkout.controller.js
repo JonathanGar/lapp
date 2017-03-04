@@ -14,8 +14,13 @@
         var vm = this,
             oldSchedule = null,
             oldAddress = null;
-        vm.logged = false, vm.step1 = "glyphicon-remove", vm.step4 = "glyphicon-remove", vm.step5 = "glyphicon-remove",
-            vm.clientName = '', vm.clientEmail = '', vm.client;
+        vm.logged = false,
+            vm.step1 = "glyphicon-remove",
+            vm.step4 = "glyphicon-remove",
+            vm.step5 = "glyphicon-remove",
+            vm.clientName = '',
+            vm.clientEmail = '',
+            vm.client, vm.onSpinner = false;
 
         init();
 
@@ -180,10 +185,13 @@
                     "deliveryDateTime": vm.establishedSched.dateTime,
                     "EffortPoints": vm.establishedSched.assignedEffortPoints
                 };
+                vm.onSpinner = true;
                 CheckoutService.post(delivery, vm.products).then(function(response) {
+                    vm.onSpinner = false;
                     debugger;
                     Utilities.showModal("OK", null, "Éxito", ["Hemos registrado su pedido. Pronto nos comunicaremos con usted."]);
                 }, function(err) {
+                    vm.onSpinner = false;
                     toastr.error("Error al enviar el pedido. Inténtalo más tarde.", "Error");
                     debugger;
                 });

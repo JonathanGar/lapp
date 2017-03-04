@@ -16,7 +16,8 @@
             'ui.bootstrap',
             'toastr',
             'ksSwiper',
-            'vcRecaptcha'
+            'vcRecaptcha',
+            'angularSpinner'
             //,'720kb.datepicker'
         ])
 

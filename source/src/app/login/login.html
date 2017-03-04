@@ -1,3 +1,4 @@
+<span us-spinner="{radius:30, width:8, length: 16}" spinner-on="login.onSpinner"></span>
 <div class="login wide-center fixed-header-margin" style="padding-top: 151px;">
     <div class="content-push">
         <div class="information-blocks">
@@ -11,9 +12,12 @@
                             <i class="fa fa-google-plus">  Inicia sesión con Google+</i>
                         </a-->
                         <br/>
-                        <a class="button style-12 register" ng-click="login.authenticate('facebook')" style="background-color:#3b5998 !important; border-color:#3b5998 !important">
-                            <i class="fa fa-facebook">  Inicia sesión con Facebook</i>
-                        </a>
+                        <center>
+                            <a class="button style-12 register" ng-click="login.authenticate('facebook')" style="width: 50%;background-color:#3b5998 !important; border-color:#3b5998 !important">
+
+                                <i class="fa fa-facebook">  Inicia sesión con Facebook</i>
+                            </a>
+                        </center>
                         <br/><br/><br/><br/><br/><br/>
                         <div class="foo-buttons">
                             <a class="button style-12 register block" style="width: 49%; border-color:#3b5998 !important" ui-sref="loginForm">
