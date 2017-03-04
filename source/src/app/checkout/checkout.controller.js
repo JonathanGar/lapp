@@ -133,56 +133,79 @@
         };
 
         function check() {
-            var items = [];
+            var items = [],
+                response = true;
             if (!vm.client) {
-                items.push("Debe iniciar sesión para realizar su pedido");
+                items.push("* Debe iniciar sesión para realizar su pedido");
+                response = false;
             }
 
             if (vm.clientName == '' || !Utilities.isEmail(vm.clientEmail)) {
-                items.push("Debe verificar los campos de 'Datos de Facturación'");
+                items.push("* Debe verificar los campos de 'Datos de Facturación'");
+                response = false;
             }
 
             if (!vm.establishedAddress) {
-                items.push("Debe seleccionar una dirección de envío");
+                items.push("* Debe seleccionar una dirección de envío");
+                response = false;
             }
 
             if (!vm.establishedSched) {
-                items.push("Debe seleccionar un horario de entrega");
+                items.push("* Debe seleccionar un horario de entrega");
+                response = false;
             }
 
-            Utilities.showModal("OK", null, "Aviso", items);
+            if (!response) {
+                Utilities.showModal("OK", null, "Aviso", items);
+                return false;
+            }
+
+            return true;
         };
 
         function post() {
             //vm.captcha();
             debugger;
-            var coupon = (vm.coupon) ? vm.coupon : "";
-            var delivery = {
-                "employeeId": vm.establishedSched.employeeId,
-                "serviceAvailabilityId": vm.establishedSched.id,
-                "clientId": vm.client.id,
-                "addressId": vm.establishedAddress.id,
-                "total": vm.subtotal,
-                "deliveryCost": 0,
-                "couponsRedeemed": 0,
-                "coupon": vm.coupon,
-                "deliveryDateTime": vm.establishedSched.dateTime,
-                "EffortPoints": vm.establishedSched.assignedEffortPoints
-            };
-            CheckoutService.post(delivery, vm.products).then(function(response) {
-                debugger;
-            }, function(err) {
-                debugger;
-            });
+            if (check()) {
+                var coupon = (vm.coupon) ? vm.coupon : "";
+                var delivery = {
+                    "employeeId": vm.establishedSched.employeeId,
+                    "serviceAvailabilityId": vm.establishedSched.id,
+                    "clientId": vm.client.id,
+                    "addressId": vm.establishedAddress.id,
+                    "total": vm.subtotal,
+                    "deliveryCost": 0,
+                    "couponsRedeemed": 0,
+                    "coupon": vm.coupon,
+                    "deliveryDateTime": vm.establishedSched.dateTime,
+                    "EffortPoints": vm.establishedSched.assignedEffortPoints
+                };
+                CheckoutService.post(delivery, vm.products).then(function(response) {
+                    debugger;
+                    Utilities.showModal("OK", null, "Éxito", ["Hemos registrado su pedido. Pronto nos comunicaremos con usted."]);
+                }, function(err) {
+                    toastr.error("Error al enviar el pedido. Inténtalo más tarde.", "Error");
+                    debugger;
+                });
+            }
         };
 
         function captcha() {
             Utilities.verifyCaptcha({ secret: "6Lcj7BYUAAAAALzKvJZ0SlDIKXJR2J6bfs64PPzv", response: vm.recaptchaResponse }).then(function(response) {
-                debugger;
+                console.log("3")
+                post();
             }, function(err) {
-                debugger;
+                console.log("3.0")
+                post();
             });
         };
+
+        function gotoLogin() {
+            debugger;
+            $window.checkout = true;
+            $state.go("login");
+        };
+
         vm.applyCoupon = applyCoupon;
         vm.setSchedule = setSchedule;
         vm.setAddress = setAddress;
@@ -190,5 +213,6 @@
         vm.post = post;
         vm.check = check;
         vm.captcha = captcha;
+        vm.gotoLogin = gotoLogin;
     }
 })();

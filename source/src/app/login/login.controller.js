@@ -5,17 +5,17 @@
         .module('lappweb')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['MainService', '$rootScope', '$stateParams', '$auth', '$state', 'toastr', 'LoginService', '$cookies', '$location', 'AuthFactory'];
+    LoginController.$inject = ['$window', 'MainService', '$rootScope', '$stateParams', '$auth', '$state', 'toastr', 'LoginService', '$cookies', '$location', 'AuthFactory'];
 
     /** @ngInject */
-    function LoginController(MainService, $rootScope, $stateParams, $auth, $state, toastr, LoginService, $cookies, $location, AuthFactory) {
+    function LoginController($window, MainService, $rootScope, $stateParams, $auth, $state, toastr, LoginService, $cookies, $location, AuthFactory) {
         var vm = this;
 
         if (window.logged) {
             $state.go("account");
         }
 
-        vm.authenticate = function(provider) {
+        function authenticate(provider) {
             $auth.authenticate(provider).then(function(response) {
                     MainService.getFacebookProfile(response.access_token).then(function(dataFacebook) {
                         $cookies.putObject("fb", dataFacebook);
@@ -25,7 +25,8 @@
                                 LoginService.Login(dataFacebook.email, dataFacebook.id).then(function(user) {
                                     toastr.success(user.name, "Bienvenido");
                                     window.logged = true;
-                                    $state.go('orders');
+
+                                    _goto();
                                 }, function(err) {
                                     if (err.Code == 110) {
                                         toastr.error("La cuenta " + dataFacebook.email + " ya se encuentra registrada", "Error");
@@ -34,7 +35,6 @@
                                         toastr.error("Error interno", "Error");
                                     }
                                 });
-
                             },
                             function(responseErr) {
                                 //La cuenta no existe
@@ -46,18 +46,18 @@
                             }
                         );
                     });
-
                 })
                 .catch(function(response) {
                     toastr.error("Error iniciando sesión", "Error");
                 });
         };
 
-        vm.login = function(user, pass) {
+
+        function login(user, pass) {
             LoginService.Login(user, pass).then(function(user) {
                 toastr.success(user.name, "Bienvenido");
                 window.logged = true;
-                $state.go('orders');
+                _goto();
             }, function(err) {
                 var desc = "";
                 if (err) {
@@ -69,6 +69,15 @@
             });
         };
 
+        function _goto() {
+            debugger;
+            if ($window.checkout) {
+                $state.go('checkout');
+            } else {
+                $state.go('orders');
+            }
+        };
+
         $('input').blur(function() {
             var $this = $(this);
             if ($this.val())
@@ -76,6 +85,9 @@
             else
                 $this.removeClass('used');
         });
+
+        vm.login = login;
+        vm.authenticate = authenticate;
     }
 
 })();
