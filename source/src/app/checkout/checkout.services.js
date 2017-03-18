@@ -40,7 +40,7 @@
 
         function post(delivery, _products) {
             delivery.id = RegisterService.guid();
-            debugger;
+            //debugger;
             var products = [];
             angular.forEach(_products, function(product, key) {
                 products.push({
@@ -60,7 +60,7 @@
                     "deleted": false
                 });
             });
-            debugger;
+            //debugger;
             var data = {
                 "DeliverySecondaryId": null,
                 "ClientId": delivery.clientId,
@@ -85,15 +85,15 @@
                 "updatedAt": null,
                 "deleted": false
             };
-            debugger;
+            //debugger;
             var deferred = $q.defer();
             $http.post(RESOURCE_API + '/api/deliveries', data)
                 .success(function(res) {
-                    debugger;
+                    //debugger;
                     deferred.resolve(res);
                 })
                 .error(function(data, status) {
-                    debugger;
+                    //debugger;
                     deferred.reject(data);
                 });
             return deferred.promise;

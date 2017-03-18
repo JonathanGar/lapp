@@ -97,7 +97,7 @@
                         settings = [];
 
                     /*$http.get(RESOURCE_API + 'tables/Settings').success(function(_settings) {
-                        debugger;
+                        //debugger;
                         settings = _settings;
                         deferred.resolve(settings);
                     });*/

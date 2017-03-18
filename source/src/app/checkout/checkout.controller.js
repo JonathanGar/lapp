@@ -89,7 +89,7 @@
 
         function getCarProducts() {
             CartService.get().then(function(res) {
-                debugger;
+                //debugger;
                 vm.products = res;
                 vm.subtotal = 0;
                 angular.forEach(res, function(product, key) {
@@ -102,7 +102,7 @@
         };
 
         function setSchedule(schedule) {
-            debugger;
+            //debugger;
             if (oldSchedule) {
                 var _oldSchedule = _.find(vm.schedulesCtr, { "id": oldSchedule });
                 _oldSchedule.active = '';
@@ -116,7 +116,7 @@
         };
 
         function setAddress(address) {
-            debugger;
+            //debugger;
             if (oldAddress) {
                 var _oldAddress = _.find(vm.addressesList, { "id": oldAddress });
                 _oldAddress.active = '';
@@ -176,7 +176,7 @@
 
         function post() {
             //vm.captcha();
-            debugger;
+            //debugger;
 
             if (check()) {
                 var coupon = (vm.coupon) ? vm.coupon : "";
@@ -195,13 +195,13 @@
                 vm.onSpinner = true;
                 CheckoutService.post(delivery, vm.products).then(function(response) {
                     vm.onSpinner = false;
-                    debugger;
+                    //debugger;
                     Utilities.showModal("OK", null, "Éxito", ["Hemos registrado su pedido. Pronto nos comunicaremos con usted."]);
                     $state.go("home");
                 }, function(err) {
                     vm.onSpinner = false;
                     toastr.error("Error al enviar el pedido. Inténtalo más tarde.", "Error");
-                    debugger;
+                    //debugger;
                 });
             }
         };
@@ -218,7 +218,7 @@
         };
 
         function gotoLogin() {
-            debugger;
+            //debugger;
             $window.checkout = true;
             $state.go("login");
         };

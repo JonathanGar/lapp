@@ -33,7 +33,7 @@
         } else if (vm.clientId) {
             OrdersService.orders().then(function(orders) {
                 if (!orders.message) {
-                    debugger;
+                    //debugger;
                     vm.orders = _.filter(orders, { "clientId": vm.clientId });
                 }
                 if (vm.orders.length === 0) {

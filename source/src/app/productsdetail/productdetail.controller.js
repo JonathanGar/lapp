@@ -67,7 +67,7 @@
                 } else {
                     vm.nodispo = true;
                     ProductService.get().then(function(data) {
-                        debugger;
+                        //debugger;
                         //vm.products = data;
                         vm.product = _.find(data, {
                             'id': $stateParams.id

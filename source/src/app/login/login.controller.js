@@ -76,7 +76,7 @@
         };
 
         function _goto() {
-            debugger;
+            //debugger;
             if ($window.checkout) {
                 $state.go('checkout');
             } else {

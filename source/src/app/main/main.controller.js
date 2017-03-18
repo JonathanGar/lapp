@@ -44,7 +44,7 @@
                 vm.catalogs = resp;
             });
         }).catch(function(err) {
-            debugger;
+            //debugger;
         });
 
         vm.AddProduct = function(product) {

@@ -29,7 +29,7 @@
                 logout();
 
                 return $http.post(RESOURCE_API + '/api/Clients', registration).then(function(response) {
-                    debugger;
+                    //debugger;
                     return response;
                 });
 
@@ -54,7 +54,7 @@
                     deferred.resolve(response);
                 }).
                 error(function(err) {
-                    debugger;
+                    //debugger;
                     //logout();
                     deferred.reject(err);
                 });

@@ -41,7 +41,7 @@
                 };
 
                 function verifyCaptcha(params) {
-                    debugger;
+                    //debugger;
                     var deferred = $q.defer();
                     var req = {
                         "method": 'POST',
@@ -51,11 +51,11 @@
                         }
                     }
                     $http(req).success(function(response) {
-                        debugger;
+                        //debugger;
                         deferred.resolve(response);
                     }).
                     error(function(err) {
-                        debugger;
+                        //debugger;
                         deferred.reject(err);
                     });
                     return deferred.promise;

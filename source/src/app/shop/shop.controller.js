@@ -55,7 +55,7 @@
         var settings = JSON.parse(localStorage.getItem('settings'));
         if (settings.length === 0) {
             MainService.getSettings().then(function(settings) {
-                debugger;
+                //debugger;
                 vm.policies = _.find(settings, {
                     'key': 'Policies'
                 }).value;

@@ -60,7 +60,7 @@
                 return config || $q.when(config);
             },
             responseError: function(rejection) {
-                //debugger;
+                ////debugger;
                 // error - was it 401 or something else?
 
                 var deferred = $q.defer(); // defer until we can re-request a new token 
@@ -71,7 +71,7 @@
 
                     try {
                         authService.obtainAccessToken().then(function(data) {
-                            debugger;
+                            //debugger;
                             $cookies.getObject("authorizationData").token = data.access_token;
                             rejection.config.headers.Authorization = 'Bearer ' + data.access_token;
                             return $q.reject(rejection);
