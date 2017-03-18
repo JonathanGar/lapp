@@ -10,6 +10,7 @@
     /** @ngInject */
     function LoginController($window, MainService, $rootScope, $stateParams, $auth, $state, toastr, LoginService, $cookies, $location, AuthFactory) {
         var vm = this;
+        $window.scrollTo(0, 0);
         vm.onSpinner = false;
 
         if (window.logged) {

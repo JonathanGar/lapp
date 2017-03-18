@@ -5,11 +5,12 @@
         .module('lappweb')
         .controller('AccountController', AccountController);
 
-    AccountController.$inject = ['$uibModal', '$cookies', '$rootScope', '$stateParams', 'AccountService', 'toastr', 'MED_CODE', '$state', '$log'];
+    AccountController.$inject = ['$window', '$uibModal', '$cookies', '$rootScope', '$stateParams', 'AccountService', 'toastr', 'MED_CODE', '$state', '$log'];
 
     /** @ngInject */
-    function AccountController($uibModal, $cookies, $rootScope, $stateParams, AccountService, toastr, MED_CODE, $state, $log) {
+    function AccountController($window, $uibModal, $cookies, $rootScope, $stateParams, AccountService, toastr, MED_CODE, $state, $log) {
         var vm = this;
+        $window.scrollTo(0, 0);
         var client = $cookies.getObject("client");
         vm.showForm = false;
 

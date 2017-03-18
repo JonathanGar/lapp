@@ -5,12 +5,12 @@
         .module('lappweb')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['MainService', 'CartService', 'FavoritesService', '$rootScope', 'toastr', 'AuthFactory'];
+    MainController.$inject = ['$window', 'MainService', 'CartService', 'FavoritesService', '$rootScope', 'toastr', 'AuthFactory'];
 
     /** @ngInject */
-    function MainController(MainService, CartService, FavoritesService, $rootScope, toastr, AuthFactory) {
+    function MainController($window, MainService, CartService, FavoritesService, $rootScope, toastr, AuthFactory) {
         var vm = this;
-
+        $window.scrollTo(0, 0);
         if (angular.isUndefined($rootScope.cart)) {
             $rootScope.cart = {
                 products: []

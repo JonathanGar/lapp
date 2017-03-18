@@ -5,11 +5,12 @@
         .module('lappweb')
         .controller('RegisterController', RegisterController);
 
-    RegisterController.$inject = ['$rootScope', '$stateParams', 'RegisterService', 'toastr', '$state', '$log', '$cookies'];
+    RegisterController.$inject = ['$window', '$rootScope', '$stateParams', 'RegisterService', 'toastr', '$state', '$log', '$cookies'];
 
     /** @ngInject */
-    function RegisterController($rootScope, $stateParams, RegisterService, toastr, $state, $log, $cookies) {
+    function RegisterController($window, $rootScope, $stateParams, RegisterService, toastr, $state, $log, $cookies) {
         var vm = this;
+        $window.scrollTo(0, 0);
         vm.opened = false;
         vm.format = 'MM/dd/yyyy';
         vm.client = {

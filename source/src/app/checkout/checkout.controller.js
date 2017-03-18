@@ -61,7 +61,8 @@
             CheckoutService.getServiceAvailability().then(
                 function(schedules) {
                     var schedulesCtr = [];
-                    var hoy = new Date(); //var hoy = new Date("January 26, 2017 11:13:00");
+                    var hoy = new Date();
+                    //var hoy = new Date("January 26, 2017 11:13:00");
                     angular.forEach(schedules, function(value, key) {
                         schedules[key].dateTime = new Date(value.dateTime);
                         if (schedules[key].dateTime - hoy > 0) {
@@ -69,6 +70,11 @@
                             schedulesCtr.push(schedules[key]);
                         }
                     });
+
+                    if (schedulesCtr.length === 0) {
+                        toastr.error("No tenemos disponibilidad horaria.", "Lo sentimos");
+                        return false;
+                    }
                     schedulesCtr.sort(function(a, b) {
                         return a.dateTime - b.dateTime;
                     });
@@ -171,6 +177,7 @@
         function post() {
             //vm.captcha();
             debugger;
+
             if (check()) {
                 var coupon = (vm.coupon) ? vm.coupon : "";
                 var delivery = {
@@ -190,6 +197,7 @@
                     vm.onSpinner = false;
                     debugger;
                     Utilities.showModal("OK", null, "Éxito", ["Hemos registrado su pedido. Pronto nos comunicaremos con usted."]);
+                    $state.go("home");
                 }, function(err) {
                     vm.onSpinner = false;
                     toastr.error("Error al enviar el pedido. Inténtalo más tarde.", "Error");
@@ -203,6 +211,7 @@
                 console.log("3")
                 post();
             }, function(err) {
+
                 console.log("3.0")
                 post();
             });

@@ -10,7 +10,7 @@
     /** @ngInject */
     function ShopCategoriesController(FavoritesService, ShopService, CartService, $rootScope, $stateParams, PagerService, toastr, MainService) {
         var vm = this;
-
+        $window.scrollTo(0, 0);
         vm.pageSize = 12;
         vm.totalProducts = 0;
         vm.totalPages = 0;
